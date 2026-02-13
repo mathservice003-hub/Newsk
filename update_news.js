@@ -23,8 +23,8 @@ const feeds = [
     {
         category: 'iscream',
         label: '아이스크림미디어 소식',
-        // Logic: ONLY "아이스크림미디어" exactly
-        customQuery: '"아이스크림미디어" -주식 -상한가 -종목'
+        // Logic: Force TITLE match
+        customQuery: 'allintitle:"아이스크림미디어" -주식 -상한가 -종목'
     },
     {
         category: 'policy',
@@ -132,7 +132,8 @@ function fetchFeed(feedObj) {
                 try {
                     const buffer = Buffer.concat(chunks);
                     const items = parseRSS(buffer.toString());
-                    const topItems = items.slice(0, 7).map(item => ({ ...item, category: feedObj.category }));
+                    // Don't limit here yet, fetch more to filter later
+                    const topItems = items.slice(0, 10).map(item => ({ ...item, category: feedObj.category }));
                     resolve(topItems);
                 } catch (e) { resolve([]); }
             });
@@ -147,6 +148,24 @@ async function updateData() {
         const allPromises = feeds.map(feed => fetchFeed(feed));
         const results = await Promise.all(allPromises);
         let allArticles = results.flat();
+
+        // 1. Deduplication (by Link)
+        const seenLinks = new Set();
+        allArticles = allArticles.filter(item => {
+            if (seenLinks.has(item.link)) return false;
+            seenLinks.add(item.link);
+            return true;
+        });
+
+        // 2. Re-classification Rule:
+        // If Title contains '아이스크림미디어', FORCE category to 'iscream'
+        allArticles.forEach(article => {
+            if (article.title.includes('아이스크림미디어')) {
+                article.category = 'iscream';
+                console.log(`📌 Re-classified "${article.title}" to [iscream]`);
+            }
+        });
+
         allArticles.sort((a, b) => b.pubDate - a.pubDate);
 
         let idCounter = 1;
