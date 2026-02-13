@@ -23,8 +23,8 @@ const feeds = [
     {
         category: 'iscream',
         label: '아이스크림미디어 소식',
-        // Logic: (Brand OR Product) -Stocks
-        customQuery: '("아이스크림미디어" OR "하이클래스" OR "루미티치") -주식 -상한가 -종목'
+        // Logic: ONLY "아이스크림미디어" exactly
+        customQuery: '"아이스크림미디어" -주식 -상한가 -종목'
     },
     {
         category: 'policy',
