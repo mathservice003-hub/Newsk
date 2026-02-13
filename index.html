@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduTech Brief KR</title>
+    <!-- Pretendard Font -->
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="background-gradient"></div>
+
+    <header class="app-header glass-panel">
+        <div class="header-content">
+            <div class="logo-area">
+                <i class="ph-fill ph-newspaper-clipping logo-icon"></i>
+                <h1>EduTech Brief <span class="highlight">KR</span></h1>
+            </div>
+            <p class="subtitle">국내 교육·AI 정책 및 산업 동향 브리핑</p>
+        </div>
+        <nav class="category-nav">
+            <button class="nav-btn active" data-category="all">전체</button>
+            <button class="nav-btn" data-category="policy">🏛️ 국가 정책</button>
+            <button class="nav-btn" data-category="local">🏫 지역 현장</button>
+            <button class="nav-btn" data-category="edutech">🚀 에듀테크 기업</button>
+            <button class="nav-btn" data-category="trend">🌎 AI/글로벌</button>
+        </nav>
+    </header>
+
+    <main class="app-container">
+        <section id="news-feed" class="news-grid">
+            <!-- News Cards will be injected here via JS -->
+        </section>
+    </main>
+
+    <!-- Detail Modal -->
+    <div id="detail-modal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content glass-panel">
+            <button class="close-btn"><i class="ph ph-x"></i></button>
+            <div class="modal-header">
+                <span class="badge" id="modal-category">카테고리</span>
+                <span class="date" id="modal-date">2024.02.13</span>
+                <h2 id="modal-title">기사 제목</h2>
+                <a href="#" id="modal-link" target="_blank" class="origin-link">원문 보러가기 <i
+                        class="ph ph-arrow-up-right"></i></a>
+            </div>
+            <div class="modal-body">
+                <div class="summary-section">
+                    <h3><i class="ph ph-lightning"></i> 한 줄 요약</h3>
+                    <p id="modal-one-line" class="highlight-text">핵심 내용이 들어갑니다.</p>
+                </div>
+                <div class="summary-section">
+                    <h3><i class="ph ph-article"></i> 무슨 내용인가?</h3>
+                    <p id="modal-content">팩트 중심의 주요 내용 정리</p>
+                </div>
+                <div class="summary-section">
+                    <h3><i class="ph ph-trend-up"></i> 왜 중요한가?</h3>
+                    <p id="modal-importance">정책적 산업적 맥락 설명</p>
+                </div>
+                <div class="summary-section insight-box">
+                    <h3><i class="ph ph-briefcase"></i> 실무 관점 시사점</h3>
+                    <p id="modal-insight">회의 활용 포인트</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
