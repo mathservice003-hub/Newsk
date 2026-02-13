@@ -10,7 +10,8 @@ const feeds = [
         keywords: [
             '교육부', '평가원', '수능', '입법',
             '정신건강', '심리부검', '신학기 점검', '공교육 정책'
-        ]
+        ],
+        exclusions: ['군청', '읍 사무소', '면 사무소', '이장', '마을', '농업', '축제']
     },
     {
         category: 'local',
@@ -18,14 +19,16 @@ const feeds = [
         keywords: [
             '대학', '부정행위', '과제', '교수',
             '에듀테크', '소프트웨어', 'SW', '행정 지원'
-        ]
+        ],
+        exclusions: ['군청', '읍 사무소', '면 사무소', '이장', '마을', '농업', '축제']
     },
     {
         category: 'edutech',
         label: '에듀테크 기업',
         keywords: [
             '아이스크림미디어', '에듀테크'
-        ]
+        ],
+        exclusions: ['구글', '애플', '아마존', '마이크로소프트', 'MS', '제미나이', 'GPT'] // Exclude Global Big Tech here
     },
     {
         category: 'trend',
@@ -89,7 +92,14 @@ function fetchFeed(feedObj) {
         // Construct detailed query
         // Group keywords with OR, wrap in parentheses
         const queryGroup = `(${feedObj.keywords.map(k => `"${k}"`).join(' OR ')})`;
-        const fullQuery = `${queryGroup} when:1d`; // Last 24 hours
+
+        // Add exclusions if any
+        let exclusionStr = '';
+        if (feedObj.exclusions && feedObj.exclusions.length > 0) {
+            exclusionStr = ' ' + feedObj.exclusions.map(e => `-${e}`).join(' ');
+        }
+
+        const fullQuery = `${queryGroup}${exclusionStr} when:1d`; // Last 24 hours
         const encodedQuery = encodeURIComponent(fullQuery);
         const url = `https://news.google.com/rss/search?q=${encodedQuery}&hl=ko&gl=KR&ceid=KR:ko`;
 
@@ -99,7 +109,7 @@ function fetchFeed(feedObj) {
             res.on('end', () => {
                 try {
                     const items = parseRSS(data);
-                    // Filter: take top 9 items per category as requested
+                    // Filter: take top 9 items per category
                     const topItems = items.slice(0, 9).map(item => ({
                         ...item,
                         category: feedObj.category
