@@ -6,8 +6,8 @@ const newsData = [
         "date": "2026.02.13",
         "oneLine": "'AI·로봇이 약 만드는 시대'…복지부·진흥원, AI 신약개발 인재 양성 확대",
         "content": "'AI·로봇이 약 만드는 시대'…복지부·진흥원, AI 신약개발 인재 양성 확대  MEDI:GATE NEWS",
-        "importance": "이 이슈는 아이스크림미디어의 기존 에듀테크 사업 모델에 직접적인 영향을 줄 수 있는 중요한 변화입니다. 특히 공교육 디지털 전환 정책과 맞물려 시장의 판도가 바뀔 가능성이 높으므로, 경쟁사의 대응 현황을 면밀히 모니터링하고 자사의 차별화된 기술력(AI 튜터 등)을 부각할 수 있는 방안을 모색해야 합니다.",
-        "insight": "영업 및 현장 지원 부서에서는 일선 학교 방문 시 이 이슈를 스몰토크 주제로 활용하여 교사들의 실제 반응을 수집하십시오. 현장의 목소리가 제품 개선으로 이어지는 선순환 구조를 만들기 위해, 수집된 피드백을 주간 회의에서 반드시 공유해야 합니다.",
+        "importance": "정부 규제 및 표준화 움직임과 관련이 깊습니다. 특히 최근 강조되고 있는 'AI 디지털 교과서'의 법적 기준이나 윤리적 가이드라인 준수 여부가 쟁점이 될 수 있으므로, 선제적인 컴플라이언스 점검과 대관 업무 강화가 요구되는 시점입니다.",
+        "insight": "기획/개발 팀은 해당 뉴스에 언급된 기술적 기능(기능명, UX 동선 등)을 벤치마킹하여 차기 업데이트 로드맵에 반영하십시오. 특히 사용자 경험(UX) 측면에서 교사의 업무 경감을 돕는 자동화 기능이 강조되고 있음에 주목해야 합니다.",
         "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBtZTlFUk42bHB3SmFnNmtJdDRyWjJ0UHc0YzNfRW1NVzRiZTJ3TEtwdTExWUZHUVBTa3JPOGJfVDB5OVozakJhS0d2VUxzbDdqMGZVOUI0aw?oc=5"
     },
     {
@@ -17,8 +17,8 @@ const newsData = [
         "date": "2026.02.13",
         "oneLine": "성신여대 사범대학 및 교육대학원, 6주기 교원양성기관 역량진단 A등급 획득",
         "content": "성신여대 사범대학 및 교육대학원, 6주기 교원양성기관 역량진단 A등급 획득  베리타스알파",
-        "importance": "정부 규제 및 표준화 움직임과 관련이 깊습니다. 특히 최근 강조되고 있는 'AI 디지털 교과서'의 법적 기준이나 윤리적 가이드라인 준수 여부가 쟁점이 될 수 있으므로, 선제적인 컴플라이언스 점검과 대관 업무 강화가 요구되는 시점입니다.",
-        "insight": "영업 및 현장 지원 부서에서는 일선 학교 방문 시 이 이슈를 스몰토크 주제로 활용하여 교사들의 실제 반응을 수집하십시오. 현장의 목소리가 제품 개선으로 이어지는 선순환 구조를 만들기 위해, 수집된 피드백을 주간 회의에서 반드시 공유해야 합니다.",
+        "importance": "최근 교육 현장에서의 요구 사항이 반영된 뉴스로, 향후 플랫폼 고도화 방향 설정에 있어 중요한 참고 지표가 될 것입니다. 단순한 기능 제공을 넘어 교사와 학생의 실질적인 페인 포인트(Pain Point)를 해결해 줄 수 있는 솔루션으로서의 가치를 증명해야 하는 시점입니다.",
+        "insight": "기획/개발 팀은 해당 뉴스에 언급된 기술적 기능(기능명, UX 동선 등)을 벤치마킹하여 차기 업데이트 로드맵에 반영하십시오. 특히 사용자 경험(UX) 측면에서 교사의 업무 경감을 돕는 자동화 기능이 강조되고 있음에 주목해야 합니다.",
         "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBWcDJpbFVoS2hxZjhJeGYtREtRTnl2ZU5Ka0Jld3NxT3pUNzVwUHVTOGlFRWtmUGhQU0kxcTM2d3ozUGFlVE9RQmJLdWlwdnVwU2VrMWRJaE8tWWFoX3I4ay1OTFJyeXU1VlUw?oc=5"
     },
     {
@@ -39,8 +39,8 @@ const newsData = [
         "date": "2026.02.13",
         "oneLine": "엔닷라이트, K-피지컬 AI 얼라이언스 컨소시엄 참여",
         "content": "엔닷라이트, K-피지컬 AI 얼라이언스 컨소시엄 참여  로봇신문",
-        "importance": "최근 교육 현장에서의 요구 사항이 반영된 뉴스로, 향후 플랫폼 고도화 방향 설정에 있어 중요한 참고 지표가 될 것입니다. 단순한 기능 제공을 넘어 교사와 학생의 실질적인 페인 포인트(Pain Point)를 해결해 줄 수 있는 솔루션으로서의 가치를 증명해야 하는 시점입니다.",
-        "insight": "마케팅 팀은 본 기사의 핵심 키워드를 활용하여 아이스크림미디어의 브랜드 메시지를 다듬어야 합니다. '선생님을 위한 AI', '안전한 에듀테크' 등의 키워드와 연계하여 자사 서비스의 신뢰도를 높이는 콘텐츠(카드뉴스, 아티클) 발행을 검토해 보시기 바랍니다.",
+        "importance": "이 이슈는 아이스크림미디어의 기존 에듀테크 사업 모델에 직접적인 영향을 줄 수 있는 중요한 변화입니다. 특히 공교육 디지털 전환 정책과 맞물려 시장의 판도가 바뀔 가능성이 높으므로, 경쟁사의 대응 현황을 면밀히 모니터링하고 자사의 차별화된 기술력(AI 튜터 등)을 부각할 수 있는 방안을 모색해야 합니다.",
+        "insight": "기획/개발 팀은 해당 뉴스에 언급된 기술적 기능(기능명, UX 동선 등)을 벤치마킹하여 차기 업데이트 로드맵에 반영하십시오. 특히 사용자 경험(UX) 측면에서 교사의 업무 경감을 돕는 자동화 기능이 강조되고 있음에 주목해야 합니다.",
         "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE8zS2hab0tIQm42a3FRSS1lMzVnSmRCdnR4STZ6TF9WUmdvOHdKam1TOHQwYVFXQlFhaEhrNHg2Y3p1dDN0bmRrUzNUSERQM2ZSbTVnb0h5RlBPMW1JbjNnSUxQMXRwNFo4NkRSNQ?oc=5"
     },
     {
@@ -50,8 +50,8 @@ const newsData = [
         "date": "2026.02.13",
         "oneLine": "판사도 AI 쓰는 세상…재판지원 AI 시스템 도입",
         "content": "판사도 AI 쓰는 세상…재판지원 AI 시스템 도입  농민신문",
-        "importance": "글로벌 빅테크 기업들의 교육 시장 진출 가속화와 맥락을 같이 하는 뉴스입니다. 이는 단기적으로는 경쟁 심화를 의미하지만, 장기적으로는 AI 기반 맞춤형 학습 시장의 전체 파이(Total Addressable Market)가 커지고 있음을 시사하므로 적극적인 투자가 필요합니다.",
-        "insight": "영업 및 현장 지원 부서에서는 일선 학교 방문 시 이 이슈를 스몰토크 주제로 활용하여 교사들의 실제 반응을 수집하십시오. 현장의 목소리가 제품 개선으로 이어지는 선순환 구조를 만들기 위해, 수집된 피드백을 주간 회의에서 반드시 공유해야 합니다.",
+        "importance": "최근 교육 현장에서의 요구 사항이 반영된 뉴스로, 향후 플랫폼 고도화 방향 설정에 있어 중요한 참고 지표가 될 것입니다. 단순한 기능 제공을 넘어 교사와 학생의 실질적인 페인 포인트(Pain Point)를 해결해 줄 수 있는 솔루션으로서의 가치를 증명해야 하는 시점입니다.",
+        "insight": "마케팅 팀은 본 기사의 핵심 키워드를 활용하여 아이스크림미디어의 브랜드 메시지를 다듬어야 합니다. '선생님을 위한 AI', '안전한 에듀테크' 등의 키워드와 연계하여 자사 서비스의 신뢰도를 높이는 콘텐츠(카드뉴스, 아티클) 발행을 검토해 보시기 바랍니다.",
         "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1TR2ZrMWlSSlhLWHhGdmpneXFSZzRSQXU0Ykp3VlllY3dTN0tfMXAtbVpNWGdYNWNuUjYzVU54bVQ2Si1uZmlaNVZDUUY1ZFhjT0FKV3U3TGl0Zw?oc=5"
     },
     {
@@ -61,7 +61,7 @@ const newsData = [
         "date": "2026.02.13",
         "oneLine": "중국 AI 신약개발 '빅머니' 유입…홍콩 상장·대형 투자 잇따라",
         "content": "중국 AI 신약개발 '빅머니' 유입…홍콩 상장·대형 투자 잇따라  약사공론",
-        "importance": "이 이슈는 아이스크림미디어의 기존 에듀테크 사업 모델에 직접적인 영향을 줄 수 있는 중요한 변화입니다. 특히 공교육 디지털 전환 정책과 맞물려 시장의 판도가 바뀔 가능성이 높으므로, 경쟁사의 대응 현황을 면밀히 모니터링하고 자사의 차별화된 기술력(AI 튜터 등)을 부각할 수 있는 방안을 모색해야 합니다.",
+        "importance": "글로벌 빅테크 기업들의 교육 시장 진출 가속화와 맥락을 같이 하는 뉴스입니다. 이는 단기적으로는 경쟁 심화를 의미하지만, 장기적으로는 AI 기반 맞춤형 학습 시장의 전체 파이(Total Addressable Market)가 커지고 있음을 시사하므로 적극적인 투자가 필요합니다.",
         "insight": "기획/개발 팀은 해당 뉴스에 언급된 기술적 기능(기능명, UX 동선 등)을 벤치마킹하여 차기 업데이트 로드맵에 반영하십시오. 특히 사용자 경험(UX) 측면에서 교사의 업무 경감을 돕는 자동화 기능이 강조되고 있음에 주목해야 합니다.",
         "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9Wb0ZVSzFSRE1pXy1UbGhPaXUtR1pCWmRBLWd6QWdhQ21JNXZiY2dYODRBT0c3RXcwSGM3d09lc3BRU1pxMFc0M3MzaHJsazlnRmRZWkhqbExnZjJuc1ZWbVp5TW9tT21RN2tpRA?oc=5"
     },
@@ -72,8 +72,8 @@ const newsData = [
         "date": "2026.02.13",
         "oneLine": "숙명여대, 교육부 교육국제화역량 우수인증대학 2년 연속 선정",
         "content": "숙명여대, 교육부 교육국제화역량 우수인증대학 2년 연속 선정  한국대학신문",
-        "importance": "글로벌 빅테크 기업들의 교육 시장 진출 가속화와 맥락을 같이 하는 뉴스입니다. 이는 단기적으로는 경쟁 심화를 의미하지만, 장기적으로는 AI 기반 맞춤형 학습 시장의 전체 파이(Total Addressable Market)가 커지고 있음을 시사하므로 적극적인 투자가 필요합니다.",
-        "insight": "기획/개발 팀은 해당 뉴스에 언급된 기술적 기능(기능명, UX 동선 등)을 벤치마킹하여 차기 업데이트 로드맵에 반영하십시오. 특히 사용자 경험(UX) 측면에서 교사의 업무 경감을 돕는 자동화 기능이 강조되고 있음에 주목해야 합니다.",
+        "importance": "이 이슈는 아이스크림미디어의 기존 에듀테크 사업 모델에 직접적인 영향을 줄 수 있는 중요한 변화입니다. 특히 공교육 디지털 전환 정책과 맞물려 시장의 판도가 바뀔 가능성이 높으므로, 경쟁사의 대응 현황을 면밀히 모니터링하고 자사의 차별화된 기술력(AI 튜터 등)을 부각할 수 있는 방안을 모색해야 합니다.",
+        "insight": "마케팅 팀은 본 기사의 핵심 키워드를 활용하여 아이스크림미디어의 브랜드 메시지를 다듬어야 합니다. '선생님을 위한 AI', '안전한 에듀테크' 등의 키워드와 연계하여 자사 서비스의 신뢰도를 높이는 콘텐츠(카드뉴스, 아티클) 발행을 검토해 보시기 바랍니다.",
         "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9YUTlvNzR1d09pZmlhbHNGOXFNTkItcXhGbDZrQWgzN0FzNFZwd2M4MDlja1ZQZWxQSkd1X2Jsa3ZWWDh3RjkwSXQ1TUpwZUxicnRIMXdDcHNQdnVmcUxkR2lrT01FUQ?oc=5"
     },
     {
@@ -83,53 +83,53 @@ const newsData = [
         "date": "2026.02.13",
         "oneLine": "잠들지 않는 AI 상담사, 대한민국 청소년의 ‘심리적 골든타임’을 지키는 파수꾼으로 재조명",
         "content": "잠들지 않는 AI 상담사, 대한민국 청소년의 ‘심리적 골든타임’을 지키는 파수꾼으로 재조명  교육을 비추다",
-        "importance": "정부 규제 및 표준화 움직임과 관련이 깊습니다. 특히 최근 강조되고 있는 'AI 디지털 교과서'의 법적 기준이나 윤리적 가이드라인 준수 여부가 쟁점이 될 수 있으므로, 선제적인 컴플라이언스 점검과 대관 업무 강화가 요구되는 시점입니다.",
+        "importance": "글로벌 빅테크 기업들의 교육 시장 진출 가속화와 맥락을 같이 하는 뉴스입니다. 이는 단기적으로는 경쟁 심화를 의미하지만, 장기적으로는 AI 기반 맞춤형 학습 시장의 전체 파이(Total Addressable Market)가 커지고 있음을 시사하므로 적극적인 투자가 필요합니다.",
         "insight": "마케팅 팀은 본 기사의 핵심 키워드를 활용하여 아이스크림미디어의 브랜드 메시지를 다듬어야 합니다. '선생님을 위한 AI', '안전한 에듀테크' 등의 키워드와 연계하여 자사 서비스의 신뢰도를 높이는 콘텐츠(카드뉴스, 아티클) 발행을 검토해 보시기 바랍니다.",
         "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5YUmtsN0U2SXI2RzYxV2tFbXhLSnE1UFdncEVMalJMb0F3c1FqeEQtc3hRNTRpZ296QUx2Q3pVVjR5Qm1yV2l2d1ZNa1c0Y3ZtdzdaZW1JWjlockRLRFdqeFFIcE95UQ?oc=5"
     },
     {
         "id": 9,
         "category": "local",
+        "title": "국립대학병원, 상급종합병원 지정 추진… 관련 법안 발의",
+        "date": "2026.02.13",
+        "oneLine": "국립대학병원, 상급종합병원 지정 추진… 관련 법안 발의",
+        "content": "국립대학병원, 상급종합병원 지정 추진… 관련 법안 발의  조선일보",
+        "importance": "정부 규제 및 표준화 움직임과 관련이 깊습니다. 특히 최근 강조되고 있는 'AI 디지털 교과서'의 법적 기준이나 윤리적 가이드라인 준수 여부가 쟁점이 될 수 있으므로, 선제적인 컴플라이언스 점검과 대관 업무 강화가 요구되는 시점입니다.",
+        "insight": "기획/개발 팀은 해당 뉴스에 언급된 기술적 기능(기능명, UX 동선 등)을 벤치마킹하여 차기 업데이트 로드맵에 반영하십시오. 특히 사용자 경험(UX) 측면에서 교사의 업무 경감을 돕는 자동화 기능이 강조되고 있음에 주목해야 합니다.",
+        "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9DTjc0TmhWTTdhaWNDOC1pZVdOVVFjSUR3TElCYVFQenFBWVZKQ0RLVV9FWC1uZDh0TGZqLWMxSGZTcFlEYmUtcFNZMjMwWVNXYmtNMEF1Nm1LeW5qTmNXb3Y2SUxsN2l0dU1YXzNjMHJPeUVYeGc?oc=5"
+    },
+    {
+        "id": 10,
+        "category": "local",
         "title": "안양대학교, 교육국제화역량인증제 평가 ‘인증대학’ 선정!",
         "date": "2026.02.13",
         "oneLine": "안양대학교, 교육국제화역량인증제 평가 ‘인증대학’ 선정!",
         "content": "안양대학교, 교육국제화역량인증제 평가 ‘인증대학’ 선정!  교수신문",
-        "importance": "정부 규제 및 표준화 움직임과 관련이 깊습니다. 특히 최근 강조되고 있는 'AI 디지털 교과서'의 법적 기준이나 윤리적 가이드라인 준수 여부가 쟁점이 될 수 있으므로, 선제적인 컴플라이언스 점검과 대관 업무 강화가 요구되는 시점입니다.",
-        "insight": "마케팅 팀은 본 기사의 핵심 키워드를 활용하여 아이스크림미디어의 브랜드 메시지를 다듬어야 합니다. '선생님을 위한 AI', '안전한 에듀테크' 등의 키워드와 연계하여 자사 서비스의 신뢰도를 높이는 콘텐츠(카드뉴스, 아티클) 발행을 검토해 보시기 바랍니다.",
+        "importance": "최근 교육 현장에서의 요구 사항이 반영된 뉴스로, 향후 플랫폼 고도화 방향 설정에 있어 중요한 참고 지표가 될 것입니다. 단순한 기능 제공을 넘어 교사와 학생의 실질적인 페인 포인트(Pain Point)를 해결해 줄 수 있는 솔루션으로서의 가치를 증명해야 하는 시점입니다.",
+        "insight": "영업 및 현장 지원 부서에서는 일선 학교 방문 시 이 이슈를 스몰토크 주제로 활용하여 교사들의 실제 반응을 수집하십시오. 현장의 목소리가 제품 개선으로 이어지는 선순환 구조를 만들기 위해, 수집된 피드백을 주간 회의에서 반드시 공유해야 합니다.",
         "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9NRm1temhzQlNuRTFrdVY4bFNmbzZKbG04cjRfWGQwWjdMYlJKVjR0ZDVUYVZ2TENxX0x0NGd1TjVfZm8tN0l5VE94aG1RT3h4Ty0xZmxoWHgwclpjRVNrWHY4Uktmdw?oc=5"
     },
     {
-        "id": 10,
+        "id": 11,
         "category": "local",
         "title": "부산시, ‘전문대 육성형 전문기술학과’ 3개 대학 선정",
         "date": "2026.02.13",
         "oneLine": "부산시, ‘전문대 육성형 전문기술학과’ 3개 대학 선정",
         "content": "부산시, ‘전문대 육성형 전문기술학과’ 3개 대학 선정  환경일보",
         "importance": "최근 교육 현장에서의 요구 사항이 반영된 뉴스로, 향후 플랫폼 고도화 방향 설정에 있어 중요한 참고 지표가 될 것입니다. 단순한 기능 제공을 넘어 교사와 학생의 실질적인 페인 포인트(Pain Point)를 해결해 줄 수 있는 솔루션으로서의 가치를 증명해야 하는 시점입니다.",
-        "insight": "영업 및 현장 지원 부서에서는 일선 학교 방문 시 이 이슈를 스몰토크 주제로 활용하여 교사들의 실제 반응을 수집하십시오. 현장의 목소리가 제품 개선으로 이어지는 선순환 구조를 만들기 위해, 수집된 피드백을 주간 회의에서 반드시 공유해야 합니다.",
+        "insight": "마케팅 팀은 본 기사의 핵심 키워드를 활용하여 아이스크림미디어의 브랜드 메시지를 다듬어야 합니다. '선생님을 위한 AI', '안전한 에듀테크' 등의 키워드와 연계하여 자사 서비스의 신뢰도를 높이는 콘텐츠(카드뉴스, 아티클) 발행을 검토해 보시기 바랍니다.",
         "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE83QUswbzNaRlZNbkRTa0Y2WjdRbUVTeTBhdFB2QUI3c05IQ3FDbzVEQlkwMWRMdTlsUTN4QWhQWmZlb014eEcxaE52dG5kT0xUNnRqdWJrSU9LcU4wWnlSZGRrVXdvVC02?oc=5"
     },
     {
-        "id": 11,
+        "id": 12,
         "category": "policy",
         "title": "행정통합 주청사 여론 광주 우세 ‘무안 어쩌나…’",
         "date": "2026.02.13",
         "oneLine": "행정통합 주청사 여론 광주 우세 ‘무안 어쩌나…’",
         "content": "행정통합 주청사 여론 광주 우세 ‘무안 어쩌나…’  의왕미디어저널",
         "importance": "최근 교육 현장에서의 요구 사항이 반영된 뉴스로, 향후 플랫폼 고도화 방향 설정에 있어 중요한 참고 지표가 될 것입니다. 단순한 기능 제공을 넘어 교사와 학생의 실질적인 페인 포인트(Pain Point)를 해결해 줄 수 있는 솔루션으로서의 가치를 증명해야 하는 시점입니다.",
-        "insight": "기획/개발 팀은 해당 뉴스에 언급된 기술적 기능(기능명, UX 동선 등)을 벤치마킹하여 차기 업데이트 로드맵에 반영하십시오. 특히 사용자 경험(UX) 측면에서 교사의 업무 경감을 돕는 자동화 기능이 강조되고 있음에 주목해야 합니다.",
-        "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBSelpGNWpiaDY2X2F5UXpVXzRyUTBBUC1QYmlfcDB1LWpISmI4dmFocV9WUGNIcTV1SzFIeXlwaHJKcmZTQXZoU0xuSWVaWVdCVm5OSC1HVW9IUzJqQ0E0cHlnZ2VESGwxRXc?oc=5"
-    },
-    {
-        "id": 12,
-        "category": "trend",
-        "title": "국가대표 AI 마지막 자리는?… 모티프·트릴리온 도전장",
-        "date": "2026.02.13",
-        "oneLine": "국가대표 AI 마지막 자리는?… 모티프·트릴리온 도전장",
-        "content": "국가대표 AI 마지막 자리는?… 모티프·트릴리온 도전장  조선일보",
-        "importance": "글로벌 빅테크 기업들의 교육 시장 진출 가속화와 맥락을 같이 하는 뉴스입니다. 이는 단기적으로는 경쟁 심화를 의미하지만, 장기적으로는 AI 기반 맞춤형 학습 시장의 전체 파이(Total Addressable Market)가 커지고 있음을 시사하므로 적극적인 투자가 필요합니다.",
         "insight": "영업 및 현장 지원 부서에서는 일선 학교 방문 시 이 이슈를 스몰토크 주제로 활용하여 교사들의 실제 반응을 수집하십시오. 현장의 목소리가 제품 개선으로 이어지는 선순환 구조를 만들기 위해, 수집된 피드백을 주간 회의에서 반드시 공유해야 합니다.",
-        "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOT2JYOTNJV0ZpN1dQNms3RGIwNnhDNFJ6b0lyaHcwelhRTjhuVTZBZDdIMXRkV2J3d0pfNlhrMU8zN1lGdm1XUjlzNGUzZDMyZzUxY1JpOXdvRURYbTM4NzJwWFBKbEU2QmZUSjdpS2dnREpPb3JLUDJucHVIOHY0X2Jfc9IBlwFBVV95cUxONzI4V3hTT2lvSWlQNGZKN25NR29UaGp6LWs3cUFyR0xjNFZCOUFENXRheUdpV1dXcUVkTUdiaGlHT2U4ZFNCVkc2akxzeGhaaGRJU2g0a0FYbUNLN3NDN0xlbjhYZHl3bHFOczI5STRKaU52WXN1XzdVVkxtaXpmMFJuYl81Y1VQbDEwQll0UXFfWjV1VEc0?oc=5"
+        "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBSelpGNWpiaDY2X2F5UXpVXzRyUTBBUC1QYmlfcDB1LWpISmI4dmFocV9WUGNIcTV1SzFIeXlwaHJKcmZTQXZoU0xuSWVaWVdCVm5OSC1HVW9IUzJqQ0E0cHlnZ2VESGwxRXc?oc=5"
     },
     {
         "id": 13,
@@ -138,7 +138,7 @@ const newsData = [
         "date": "2026.02.13",
         "oneLine": "김주호 KAIST 교수, UN 첫 AI 과학패널 선정…한국인 중 유일",
         "content": "김주호 KAIST 교수, UN 첫 AI 과학패널 선정…한국인 중 유일  동아사이언스",
-        "importance": "이 이슈는 아이스크림미디어의 기존 에듀테크 사업 모델에 직접적인 영향을 줄 수 있는 중요한 변화입니다. 특히 공교육 디지털 전환 정책과 맞물려 시장의 판도가 바뀔 가능성이 높으므로, 경쟁사의 대응 현황을 면밀히 모니터링하고 자사의 차별화된 기술력(AI 튜터 등)을 부각할 수 있는 방안을 모색해야 합니다.",
+        "importance": "최근 교육 현장에서의 요구 사항이 반영된 뉴스로, 향후 플랫폼 고도화 방향 설정에 있어 중요한 참고 지표가 될 것입니다. 단순한 기능 제공을 넘어 교사와 학생의 실질적인 페인 포인트(Pain Point)를 해결해 줄 수 있는 솔루션으로서의 가치를 증명해야 하는 시점입니다.",
         "insight": "기획/개발 팀은 해당 뉴스에 언급된 기술적 기능(기능명, UX 동선 등)을 벤치마킹하여 차기 업데이트 로드맵에 반영하십시오. 특히 사용자 경험(UX) 측면에서 교사의 업무 경감을 돕는 자동화 기능이 강조되고 있음에 주목해야 합니다.",
         "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9RenAydERBQTVwOHUxdUVjdUpTb19KLUdTay1LSXA2TUVmUE9VdUhPNDRVMDdHcTZUUHJURXBKMmQ5Q28zeUxBOFVRc2ZKVl9wRXIxTw?oc=5"
     },
@@ -150,7 +150,7 @@ const newsData = [
         "oneLine": "교육부 '피지컬 AI 시대', 바이오·로봇 분야 첨단산업 특성화대학 5개교 신규 선정",
         "content": "교육부 '피지컬 AI 시대', 바이오·로봇 분야 첨단산업 특성화대학 5개교 신규 선정  인공지능신문",
         "importance": "글로벌 빅테크 기업들의 교육 시장 진출 가속화와 맥락을 같이 하는 뉴스입니다. 이는 단기적으로는 경쟁 심화를 의미하지만, 장기적으로는 AI 기반 맞춤형 학습 시장의 전체 파이(Total Addressable Market)가 커지고 있음을 시사하므로 적극적인 투자가 필요합니다.",
-        "insight": "기획/개발 팀은 해당 뉴스에 언급된 기술적 기능(기능명, UX 동선 등)을 벤치마킹하여 차기 업데이트 로드맵에 반영하십시오. 특히 사용자 경험(UX) 측면에서 교사의 업무 경감을 돕는 자동화 기능이 강조되고 있음에 주목해야 합니다.",
+        "insight": "영업 및 현장 지원 부서에서는 일선 학교 방문 시 이 이슈를 스몰토크 주제로 활용하여 교사들의 실제 반응을 수집하십시오. 현장의 목소리가 제품 개선으로 이어지는 선순환 구조를 만들기 위해, 수집된 피드백을 주간 회의에서 반드시 공유해야 합니다.",
         "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1DOTQ2ZXVHdm1TblVjYXdFRUtFd3Q4dEl3N19vYllQT3MwRFZtbF9jVkhaT3g0NXNMQ0dIbGZ6UzZyOFF1TGJxU3otZGNWRzR1NElWdS1IRDdSU0stSVpfeVlWbFFwX0E?oc=5"
     },
     {
@@ -160,67 +160,100 @@ const newsData = [
         "date": "2026.02.13",
         "oneLine": "룰루메딕, 업스테이지와 '맞손'...의료 마이데이터 기반 AI 언어모델 개발",
         "content": "룰루메딕, 업스테이지와 '맞손'...의료 마이데이터 기반 AI 언어모델 개발  팜이데일리",
-        "importance": "글로벌 빅테크 기업들의 교육 시장 진출 가속화와 맥락을 같이 하는 뉴스입니다. 이는 단기적으로는 경쟁 심화를 의미하지만, 장기적으로는 AI 기반 맞춤형 학습 시장의 전체 파이(Total Addressable Market)가 커지고 있음을 시사하므로 적극적인 투자가 필요합니다.",
-        "insight": "기획/개발 팀은 해당 뉴스에 언급된 기술적 기능(기능명, UX 동선 등)을 벤치마킹하여 차기 업데이트 로드맵에 반영하십시오. 특히 사용자 경험(UX) 측면에서 교사의 업무 경감을 돕는 자동화 기능이 강조되고 있음에 주목해야 합니다.",
+        "importance": "정부 규제 및 표준화 움직임과 관련이 깊습니다. 특히 최근 강조되고 있는 'AI 디지털 교과서'의 법적 기준이나 윤리적 가이드라인 준수 여부가 쟁점이 될 수 있으므로, 선제적인 컴플라이언스 점검과 대관 업무 강화가 요구되는 시점입니다.",
+        "insight": "영업 및 현장 지원 부서에서는 일선 학교 방문 시 이 이슈를 스몰토크 주제로 활용하여 교사들의 실제 반응을 수집하십시오. 현장의 목소리가 제품 개선으로 이어지는 선순환 구조를 만들기 위해, 수집된 피드백을 주간 회의에서 반드시 공유해야 합니다.",
         "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBKSVlkSTVaVVE4dDdCdHB0bHB3YTVuYnROVUktSjVXbV9sX3plMzBFTmwtWEsxVjRTNFhtQjZFZHdnRjI4TExhTGVkODVPeUt0dUFZTzNkclVlTVBwYW0yVWdET25uTHpIbGdlOHRn?oc=5"
     },
     {
         "id": 16,
-        "category": "local",
-        "title": "가천대학교 학위수여식… 이길여 총장 “AI의 날개로 더 멀리, 더 높이”",
+        "category": "iscream",
+        "title": "웅진씽크빅, -0.59% VI 발동",
         "date": "2026.02.13",
-        "oneLine": "가천대학교 학위수여식… 이길여 총장 “AI의 날개로 더 멀리, 더 높이”",
-        "content": "가천대학교 학위수여식… 이길여 총장 “AI의 날개로 더 멀리, 더 높이”  이뉴스투데이",
-        "importance": "최근 교육 현장에서의 요구 사항이 반영된 뉴스로, 향후 플랫폼 고도화 방향 설정에 있어 중요한 참고 지표가 될 것입니다. 단순한 기능 제공을 넘어 교사와 학생의 실질적인 페인 포인트(Pain Point)를 해결해 줄 수 있는 솔루션으로서의 가치를 증명해야 하는 시점입니다.",
-        "insight": "기획/개발 팀은 해당 뉴스에 언급된 기술적 기능(기능명, UX 동선 등)을 벤치마킹하여 차기 업데이트 로드맵에 반영하십시오. 특히 사용자 경험(UX) 측면에서 교사의 업무 경감을 돕는 자동화 기능이 강조되고 있음에 주목해야 합니다.",
-        "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBmemZjaHpnLUVkTUx5aS0waUYyNUl4OEh2YXdVa3NtSjNPRUR0V1RQeXBIOHpsQUxZbHlUWUxDa3N2VGpWa3hoYnlOZWdHYmxBT0JremQ2YWVWUHVEVVJBWXJsajB6c1ltZFVMVjRSbmJLc3h20gF0QVVfeXFMUGZ6ZmNoemctRWRNTHlpLTBpRjI1SXg4SHZhd1Vrc21KM09FRHRXVFB5cEg4emxBTFlseVRZTENrc3ZUalZreGhieU5lZ0dibEFPQmt6ZDZhZVZQdURVUkFZcmxqMHpzWW1kVUxWNFJuYktzeHY?oc=5"
+        "oneLine": "웅진씽크빅, -0.59% VI 발동",
+        "content": "웅진씽크빅, -0.59% VI 발동 - 조선비즈  Chosunbiz",
+        "importance": "정부 규제 및 표준화 움직임과 관련이 깊습니다. 특히 최근 강조되고 있는 'AI 디지털 교과서'의 법적 기준이나 윤리적 가이드라인 준수 여부가 쟁점이 될 수 있으므로, 선제적인 컴플라이언스 점검과 대관 업무 강화가 요구되는 시점입니다.",
+        "insight": "영업 및 현장 지원 부서에서는 일선 학교 방문 시 이 이슈를 스몰토크 주제로 활용하여 교사들의 실제 반응을 수집하십시오. 현장의 목소리가 제품 개선으로 이어지는 선순환 구조를 만들기 위해, 수집된 피드백을 주간 회의에서 반드시 공유해야 합니다.",
+        "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNVF9uS1VHaHRuR0YyR1dGb2FHVWlxVmk5NG1ySGE3VXprcFB1VjV3Rk9QX3hvNzJTbDUyeGJ2WmNDVW41UG1LSlc3NXA4d2drODVNUFZJTTlvX3NrNTdxaTE5S3JCbTVscXZMb2ljSTh4b092YVN0N2ZXZ0VXVTlZd3o4VXB1TnVfYlFKbWhEd2k4M25uUzlz0gGXAUFVX3lxTE1UX25LVUdodG5HRjJHV0ZvYUdVaXFWaTk0bXJIYTdVemtwUHVWNXdGT1BfeG83MlNsNTJ4YnZaY0NVbjVQbUtKVzc1cDh3Z2s4NU1QVklNOW9fc2s1N3FpMTlLckJtNWxxdkxvaWNJOHhvT3ZhU3Q3ZldnRVdVOVl3ejhVcHVOdV9iUUptaER3aTgzbm5TOXM?oc=5"
     },
     {
         "id": 17,
+        "category": "iscream",
+        "title": "\"다시 독서 권하는 시대\"…AI 대세 속, 아이들 책 읽히기 나서는 교육업계",
+        "date": "2026.02.13",
+        "oneLine": "\"다시 독서 권하는 시대\"…AI 대세 속, 아이들 책 읽히기 나서는 교육업계",
+        "content": "\"다시 독서 권하는 시대\"…AI 대세 속, 아이들 책 읽히기 나서는 교육업계  네이트",
+        "importance": "글로벌 빅테크 기업들의 교육 시장 진출 가속화와 맥락을 같이 하는 뉴스입니다. 이는 단기적으로는 경쟁 심화를 의미하지만, 장기적으로는 AI 기반 맞춤형 학습 시장의 전체 파이(Total Addressable Market)가 커지고 있음을 시사하므로 적극적인 투자가 필요합니다.",
+        "insight": "기획/개발 팀은 해당 뉴스에 언급된 기술적 기능(기능명, UX 동선 등)을 벤치마킹하여 차기 업데이트 로드맵에 반영하십시오. 특히 사용자 경험(UX) 측면에서 교사의 업무 경감을 돕는 자동화 기능이 강조되고 있음에 주목해야 합니다.",
+        "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9yZjN2cW5WeldxcE1Pd2VGSktDanhaR2V4SEpCTGVzOFJPaEx6LW1DSF9JNmlXWTUwYlZnNXlFcHNwNDVnYVdWTl85NWJob096ZXlv?oc=5"
+    },
+    {
+        "id": 18,
+        "category": "trend",
+        "title": "“AI가 엑셀 잡아먹어”… 위기의 MS",
+        "date": "2026.02.13",
+        "oneLine": "“AI가 엑셀 잡아먹어”… 위기의 MS",
+        "content": "“AI가 엑셀 잡아먹어”… 위기의 MS  조선일보",
+        "importance": "이 이슈는 아이스크림미디어의 기존 에듀테크 사업 모델에 직접적인 영향을 줄 수 있는 중요한 변화입니다. 특히 공교육 디지털 전환 정책과 맞물려 시장의 판도가 바뀔 가능성이 높으므로, 경쟁사의 대응 현황을 면밀히 모니터링하고 자사의 차별화된 기술력(AI 튜터 등)을 부각할 수 있는 방안을 모색해야 합니다.",
+        "insight": "영업 및 현장 지원 부서에서는 일선 학교 방문 시 이 이슈를 스몰토크 주제로 활용하여 교사들의 실제 반응을 수집하십시오. 현장의 목소리가 제품 개선으로 이어지는 선순환 구조를 만들기 위해, 수집된 피드백을 주간 회의에서 반드시 공유해야 합니다.",
+        "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPb2dYR3ZqZl9BZl96N3dPcmFrRWgwcjBXejNCX19UR3lhbnA1UDQtbUlHSmhBSjJWVmZ3VVBwUUxTWVVoZmQ0akwwOGxoTUp2c2h4UGNOS09xZzRHaHN6N3d0Y3VjR0tEdVRzbDdVM0FPejAxR1FmVXFpV3VYQVc3TTZyd9IBlwFBVV95cUxQaC05U0NGYjZQNm5aMm41akhlUEFZWlVuc2U2c24zaUUyWFhZcDdIYUJ3Ukt2aFFLOGwxMDUydk5JTjdDVHhxOVdnRlNaUWJzNFhBcVg2elNMZXpIcmsyRGo0RW0zUFZ4b0E1WjdyWDRUaXY2TFlNZk5CN0tURmIxUTFYZWRmdmt1cl94QTAzbVktSm1BTnFj?oc=5"
+    },
+    {
+        "id": 19,
         "category": "policy",
         "title": "아산시, 충청남도 건설본부 북부사무소 유치... 11일 업무 개시",
         "date": "2026.02.12",
         "oneLine": "아산시, 충청남도 건설본부 북부사무소 유치... 11일 업무 개시",
         "content": "아산시, 충청남도 건설본부 북부사무소 유치... 11일 업무 개시  엠뉴스",
-        "importance": "이 이슈는 아이스크림미디어의 기존 에듀테크 사업 모델에 직접적인 영향을 줄 수 있는 중요한 변화입니다. 특히 공교육 디지털 전환 정책과 맞물려 시장의 판도가 바뀔 가능성이 높으므로, 경쟁사의 대응 현황을 면밀히 모니터링하고 자사의 차별화된 기술력(AI 튜터 등)을 부각할 수 있는 방안을 모색해야 합니다.",
-        "insight": "영업 및 현장 지원 부서에서는 일선 학교 방문 시 이 이슈를 스몰토크 주제로 활용하여 교사들의 실제 반응을 수집하십시오. 현장의 목소리가 제품 개선으로 이어지는 선순환 구조를 만들기 위해, 수집된 피드백을 주간 회의에서 반드시 공유해야 합니다.",
+        "importance": "최근 교육 현장에서의 요구 사항이 반영된 뉴스로, 향후 플랫폼 고도화 방향 설정에 있어 중요한 참고 지표가 될 것입니다. 단순한 기능 제공을 넘어 교사와 학생의 실질적인 페인 포인트(Pain Point)를 해결해 줄 수 있는 솔루션으로서의 가치를 증명해야 하는 시점입니다.",
+        "insight": "기획/개발 팀은 해당 뉴스에 언급된 기술적 기능(기능명, UX 동선 등)을 벤치마킹하여 차기 업데이트 로드맵에 반영하십시오. 특히 사용자 경험(UX) 측면에서 교사의 업무 경감을 돕는 자동화 기능이 강조되고 있음에 주목해야 합니다.",
         "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1iZjZPYVVoOXJTeVE0Yi1BSHNRUGN4bnoxVTFPb2tkeDdhcGEzdXBqUUt6YjF6VjVLclVyRTlRVDVPQzctZFhMWEpHZ3FZY1JNbm1oQ2VPNlkzTzFYZnpTX2E1TS0?oc=5"
     },
     {
-        "id": 18,
+        "id": 20,
         "category": "edutech",
         "title": "양주시 에듀테크공유학교 운영 성과공유회 개최",
         "date": "2026.02.12",
         "oneLine": "양주시 에듀테크공유학교 운영 성과공유회 개최",
         "content": "양주시 에듀테크공유학교 운영 성과공유회 개최  베리타스알파",
-        "importance": "최근 교육 현장에서의 요구 사항이 반영된 뉴스로, 향후 플랫폼 고도화 방향 설정에 있어 중요한 참고 지표가 될 것입니다. 단순한 기능 제공을 넘어 교사와 학생의 실질적인 페인 포인트(Pain Point)를 해결해 줄 수 있는 솔루션으로서의 가치를 증명해야 하는 시점입니다.",
+        "importance": "이 이슈는 아이스크림미디어의 기존 에듀테크 사업 모델에 직접적인 영향을 줄 수 있는 중요한 변화입니다. 특히 공교육 디지털 전환 정책과 맞물려 시장의 판도가 바뀔 가능성이 높으므로, 경쟁사의 대응 현황을 면밀히 모니터링하고 자사의 차별화된 기술력(AI 튜터 등)을 부각할 수 있는 방안을 모색해야 합니다.",
         "insight": "기획/개발 팀은 해당 뉴스에 언급된 기술적 기능(기능명, UX 동선 등)을 벤치마킹하여 차기 업데이트 로드맵에 반영하십시오. 특히 사용자 경험(UX) 측면에서 교사의 업무 경감을 돕는 자동화 기능이 강조되고 있음에 주목해야 합니다.",
         "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9hbEtnTjh1MlFlQllyQ0ZRXzVqeG4tRHp0VWlhT3RBd195UjRKSjdqUnRKVUdLbmlVVTBmUG9qU0U2TFJIY3k0ZUpuSzgyd3A4Yk1raTh1SU10OENuQWNlR29VSGxKMVdta3Rv?oc=5"
     },
     {
-        "id": 19,
+        "id": 21,
+        "category": "iscream",
+        "title": "[KFE 유통로그]교원 플래너스어학원·아이스크림미디어 하이클래스, 신학기 수요 겨냥",
+        "date": "2026.02.12",
+        "oneLine": "[KFE 유통로그]교원 플래너스어학원·아이스크림미디어 하이클래스, 신학기 수요 겨냥",
+        "content": "[KFE 유통로그]교원 플래너스어학원·아이스크림미디어 하이클래스, 신학기 수요 겨냥  한국금융경제신문",
+        "importance": "이 이슈는 아이스크림미디어의 기존 에듀테크 사업 모델에 직접적인 영향을 줄 수 있는 중요한 변화입니다. 특히 공교육 디지털 전환 정책과 맞물려 시장의 판도가 바뀔 가능성이 높으므로, 경쟁사의 대응 현황을 면밀히 모니터링하고 자사의 차별화된 기술력(AI 튜터 등)을 부각할 수 있는 방안을 모색해야 합니다.",
+        "insight": "기획/개발 팀은 해당 뉴스에 언급된 기술적 기능(기능명, UX 동선 등)을 벤치마킹하여 차기 업데이트 로드맵에 반영하십시오. 특히 사용자 경험(UX) 측면에서 교사의 업무 경감을 돕는 자동화 기능이 강조되고 있음에 주목해야 합니다.",
+        "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBDa2UxQnNoVnkyR3pLNGlyaGlLcUFNdnhmNjJCZmZpelRMQ2Y4VmtTQk5wRFV2bGtuQ2dxbFlEZjNpMjAwbV9QLVBrUGEwNERnXzlEWlFRRHVQV0VWZ1dZeVpyR2V2Y1VyVHc0TUotTjLSAXBBVV95cUxQQ2tlMUJzaFZ5Mkd6SzRpcmhpS3FBTXZ4ZjYyQmZmaXpUTENmOFZrU0JOcERVdmxrbkNncWxZRGYzaTIwMG1fUC1Qa1BhMDREZ185RFpRUUR1UFdFVmdXWXlackdldmNVclR3NE1KLU4y?oc=5"
+    },
+    {
+        "id": 22,
         "category": "edutech",
         "title": "[KFE 유통로그]교원 플래너스어학원·아이스크림미디어 하이클래스, 신학기 수요 겨냥",
         "date": "2026.02.12",
         "oneLine": "[KFE 유통로그]교원 플래너스어학원·아이스크림미디어 하이클래스, 신학기 수요 겨냥",
         "content": "[KFE 유통로그]교원 플래너스어학원·아이스크림미디어 하이클래스, 신학기 수요 겨냥  한국금융경제신문",
-        "importance": "정부 규제 및 표준화 움직임과 관련이 깊습니다. 특히 최근 강조되고 있는 'AI 디지털 교과서'의 법적 기준이나 윤리적 가이드라인 준수 여부가 쟁점이 될 수 있으므로, 선제적인 컴플라이언스 점검과 대관 업무 강화가 요구되는 시점입니다.",
+        "importance": "글로벌 빅테크 기업들의 교육 시장 진출 가속화와 맥락을 같이 하는 뉴스입니다. 이는 단기적으로는 경쟁 심화를 의미하지만, 장기적으로는 AI 기반 맞춤형 학습 시장의 전체 파이(Total Addressable Market)가 커지고 있음을 시사하므로 적극적인 투자가 필요합니다.",
         "insight": "기획/개발 팀은 해당 뉴스에 언급된 기술적 기능(기능명, UX 동선 등)을 벤치마킹하여 차기 업데이트 로드맵에 반영하십시오. 특히 사용자 경험(UX) 측면에서 교사의 업무 경감을 돕는 자동화 기능이 강조되고 있음에 주목해야 합니다.",
         "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBDa2UxQnNoVnkyR3pLNGlyaGlLcUFNdnhmNjJCZmZpelRMQ2Y4VmtTQk5wRFV2bGtuQ2dxbFlEZjNpMjAwbV9QLVBrUGEwNERnXzlEWlFRRHVQV0VWZ1dZeVpyR2V2Y1VyVHc0TUotTjLSAXBBVV95cUxQQ2tlMUJzaFZ5Mkd6SzRpcmhpS3FBTXZ4ZjYyQmZmaXpUTENmOFZrU0JOcERVdmxrbkNncWxZRGYzaTIwMG1fUC1Qa1BhMDREZ185RFpRUUR1UFdFVmdXWXlackdldmNVclR3NE1KLU4y?oc=5"
     },
     {
-        "id": 20,
+        "id": 23,
         "category": "edutech",
         "title": "전창홍 이티에듀 팀장, 디지털 교육 활성화 유공 교육부장관 표창",
         "date": "2026.02.12",
         "oneLine": "전창홍 이티에듀 팀장, 디지털 교육 활성화 유공 교육부장관 표창",
         "content": "전창홍 이티에듀 팀장, 디지털 교육 활성화 유공 교육부장관 표창  eduplusnews.com",
         "importance": "정부 규제 및 표준화 움직임과 관련이 깊습니다. 특히 최근 강조되고 있는 'AI 디지털 교과서'의 법적 기준이나 윤리적 가이드라인 준수 여부가 쟁점이 될 수 있으므로, 선제적인 컴플라이언스 점검과 대관 업무 강화가 요구되는 시점입니다.",
-        "insight": "마케팅 팀은 본 기사의 핵심 키워드를 활용하여 아이스크림미디어의 브랜드 메시지를 다듬어야 합니다. '선생님을 위한 AI', '안전한 에듀테크' 등의 키워드와 연계하여 자사 서비스의 신뢰도를 높이는 콘텐츠(카드뉴스, 아티클) 발행을 검토해 보시기 바랍니다.",
+        "insight": "영업 및 현장 지원 부서에서는 일선 학교 방문 시 이 이슈를 스몰토크 주제로 활용하여 교사들의 실제 반응을 수집하십시오. 현장의 목소리가 제품 개선으로 이어지는 선순환 구조를 만들기 위해, 수집된 피드백을 주간 회의에서 반드시 공유해야 합니다.",
         "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE42YlN0Ty1SRVhaU3F1M1Q2UERkZS0yQ3JFMGxmaExRS3BwZ05mOFE3dHdzTmE1VGVjOU4yUkxUcTdxZjVqa3BRZ3VaVFdYVE5jWjMwUHF2TElJM3hmMWY4UmtHSVhKaVdoRkNQb0pB0gFyQVVfeXFMT3NfWWFXUGhGbTJjZ0U1NXc5SGRINk05eTVaQ21qdHVvczFKUFlMbWIzOHlISnFfdG1UYVpuazdKX1d6UGV1ZDhNTlJQS25LdGFDVkpYZVZYVG41Sm56UlFSeVo2Z2VuLXhvTlM0T2NJbnVn?oc=5"
     },
     {
-        "id": 21,
+        "id": 24,
         "category": "edutech",
         "title": "AI로 여는 개인맞춤 교육…15조원 새 시장이 열린다",
         "date": "2026.02.12",
@@ -231,25 +264,36 @@ const newsData = [
         "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE54UW0ybV9pY3ZiUlBteFFZX1A1SzFCTS1BRDRYczhHZ1ItU3VMSGNsQTlSQXRUSXd1Qk5kZ3FXQzV5VER0djdLNFlmaFRXOHFQdjJ5X9IBVEFVX3lxTE54UW0ybV9pY3ZiUlBteFFZX1A1SzFCTS1BRDRYczhHZ1ItU3VMSGNsQTlSQXRUSXd1Qk5kZ3FXQzV5VER0djdLNFlmaFRXOHFQdjJ5Xw?oc=5"
     },
     {
-        "id": 22,
+        "id": 25,
         "category": "edutech",
         "title": "학교에 에듀테크를 도입해도 되는가?",
         "date": "2026.02.12",
         "oneLine": "학교에 에듀테크를 도입해도 되는가?",
         "content": "학교에 에듀테크를 도입해도 되는가?  충청일보",
-        "importance": "이 이슈는 아이스크림미디어의 기존 에듀테크 사업 모델에 직접적인 영향을 줄 수 있는 중요한 변화입니다. 특히 공교육 디지털 전환 정책과 맞물려 시장의 판도가 바뀔 가능성이 높으므로, 경쟁사의 대응 현황을 면밀히 모니터링하고 자사의 차별화된 기술력(AI 튜터 등)을 부각할 수 있는 방안을 모색해야 합니다.",
+        "importance": "정부 규제 및 표준화 움직임과 관련이 깊습니다. 특히 최근 강조되고 있는 'AI 디지털 교과서'의 법적 기준이나 윤리적 가이드라인 준수 여부가 쟁점이 될 수 있으므로, 선제적인 컴플라이언스 점검과 대관 업무 강화가 요구되는 시점입니다.",
         "insight": "영업 및 현장 지원 부서에서는 일선 학교 방문 시 이 이슈를 스몰토크 주제로 활용하여 교사들의 실제 반응을 수집하십시오. 현장의 목소리가 제품 개선으로 이어지는 선순환 구조를 만들기 위해, 수집된 피드백을 주간 회의에서 반드시 공유해야 합니다.",
         "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE4wSkw4MnJ4ZHpPNUxNajRESTF0MWpDd2J4U2M5T2ItcHZNaXBFbGJzQ0l6N1RTdlp3MkxOaWJ1cE4yWkh4UEVZU1NOVkdYY1RGTHJvRHBVSmtOZ1dLbEwxTDR0YkdmSUR5Q29wYWtFRjE?oc=5"
     },
     {
-        "id": 23,
+        "id": 26,
         "category": "edutech",
         "title": "[에듀플러스]“AI 교육 늘린다더니”…에듀테크 쓰려면 학운위 통과? 학교·기업 '반발'",
         "date": "2026.02.12",
         "oneLine": "[에듀플러스]“AI 교육 늘린다더니”…에듀테크 쓰려면 학운위 통과? 학교·기업 '반발'",
         "content": "[에듀플러스]“AI 교육 늘린다더니”…에듀테크 쓰려면 학운위 통과? 학교·기업 '반발'  전자신문",
         "importance": "최근 교육 현장에서의 요구 사항이 반영된 뉴스로, 향후 플랫폼 고도화 방향 설정에 있어 중요한 참고 지표가 될 것입니다. 단순한 기능 제공을 넘어 교사와 학생의 실질적인 페인 포인트(Pain Point)를 해결해 줄 수 있는 솔루션으로서의 가치를 증명해야 하는 시점입니다.",
-        "insight": "영업 및 현장 지원 부서에서는 일선 학교 방문 시 이 이슈를 스몰토크 주제로 활용하여 교사들의 실제 반응을 수집하십시오. 현장의 목소리가 제품 개선으로 이어지는 선순환 구조를 만들기 위해, 수집된 피드백을 주간 회의에서 반드시 공유해야 합니다.",
+        "insight": "마케팅 팀은 본 기사의 핵심 키워드를 활용하여 아이스크림미디어의 브랜드 메시지를 다듬어야 합니다. '선생님을 위한 AI', '안전한 에듀테크' 등의 키워드와 연계하여 자사 서비스의 신뢰도를 높이는 콘텐츠(카드뉴스, 아티클) 발행을 검토해 보시기 바랍니다.",
         "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5RN2Fmam9zeXNsQjV6N0VHREhVSzlYczJBVzV4dmR4dTBJaXIyTlowVm5DandVODdCeHFVOXoxeWMyZTFSX2tINVRya3NSdw?oc=5"
+    },
+    {
+        "id": 27,
+        "category": "iscream",
+        "title": "윌비스, +4.92% 상승폭 확대",
+        "date": "2026.02.12",
+        "oneLine": "윌비스, +4.92% 상승폭 확대",
+        "content": "윌비스, +4.92% 상승폭 확대 - 조선비즈  Chosunbiz",
+        "importance": "글로벌 빅테크 기업들의 교육 시장 진출 가속화와 맥락을 같이 하는 뉴스입니다. 이는 단기적으로는 경쟁 심화를 의미하지만, 장기적으로는 AI 기반 맞춤형 학습 시장의 전체 파이(Total Addressable Market)가 커지고 있음을 시사하므로 적극적인 투자가 필요합니다.",
+        "insight": "마케팅 팀은 본 기사의 핵심 키워드를 활용하여 아이스크림미디어의 브랜드 메시지를 다듬어야 합니다. '선생님을 위한 AI', '안전한 에듀테크' 등의 키워드와 연계하여 자사 서비스의 신뢰도를 높이는 콘텐츠(카드뉴스, 아티클) 발행을 검토해 보시기 바랍니다.",
+        "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQMmFTN3htV01WWmNuTnZRa2M3NWltT2RxR0cxT3kwc1pCRWsxNFBJR2QyNG5lNEtEMEhXTV9zakNJZzA2ZmNYODFwSnIzTHBhU3h6Wi16cDd1dzIwajBreWlKaFZ1S1Vxa292X21XazFYaXRra1FDVjNMb3NmVjZ3eThMVlNSQVNOZFZqTTNmeXdGRl9nSWpF0gGXAUFVX3lxTFAyYVM3eG1XTVZaY25OdlFrYzc1aW1PZHFHRzFPeTBzWkJFazE0UElHZDI0bmU0S0QwSFdNX3NqQ0lnMDZmY1g4MXBKcjNMcGFTeHpaLXpwN3V3MjBqMGt5aUpoVnVLVXFrb3ZfbVdrMVhpdGtrUUNWM0xvc2ZWNnd5OExWU1JBU05kVmpNM2Z5d0ZGX2dJakU?oc=5"
     }
 ];

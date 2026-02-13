@@ -192,6 +192,12 @@ h1 {
 }
 
 /* Category Colors */
+.card-badge.iscream {
+    background: #E8F5E9;
+    color: #2E7D32;
+}
+
+/* Mint/Green */
 .card-badge.policy {
     background: #E3F2FD;
     color: #1565C0;
@@ -252,7 +258,7 @@ h1 {
     gap: 0.5rem;
 }
 
-/* Modal - Completely Revamped */
+/* Modal */
 .modal {
     position: fixed;
     top: 0;
@@ -349,6 +355,12 @@ h1 {
     background: #eee;
 }
 
+.badge.iscream {
+    background: #E8F5E9;
+    color: #2E7D32;
+}
+
+/* Mint/Green */
 .badge.policy {
     background: #E3F2FD;
     color: #1565C0;

@@ -16,7 +16,16 @@ function cleanText(str) {
 }
 
 const feeds = [
-    { category: 'policy', label: '국가 정책', keywords: ['교육부', '평가원', '수능', '입법', '정신건강', '심리부검', '신학기 점검', '공교육 정책'], exclusions: ['군청', '읍 사무소', '면 사무소', '이장', '마을', '농업', '축제'] },
+    {
+        category: 'iscream',
+        label: '아이스크림미디어 소식',
+        keywords: ['아이스크림미디어', '아이스크림에듀', 'i-Scream Media'],
+        exclusions: []
+    },
+    {
+        category: 'policy',
+        label: '국가 정책', keywords: ['교육부', '평가원', '수능', '입법', '정신건강', '심리부검', '신학기 점검', '공교육 정책'], exclusions: ['군청', '읍 사무소', '면 사무소', '이장', '마을', '농업', '축제']
+    },
     { category: 'local', label: '지역 교육 현황', keywords: ['대학', '대학교', '대학 총장', '학사 운영', '캠퍼스', '고등교육', 'LINC', '글로컬대학'], exclusions: ['군', '참모총장', '국방부', '계엄', '내란', '의혹', '전투', '부대'] },
     { category: 'edutech', label: '에듀테크 기업', keywords: ['아이스크림미디어', '에듀테크'], exclusions: ['구글', '애플', '아마존', '마이크로소프트', 'MS', '제미나이', 'GPT'] },
     { category: 'trend', label: 'AI/글로벌', keywords: ['AI', '로봇', '범용인공지능', 'AGI', '할루시네이션', '환각', '인용 오류', '구글', '제미나이', '아마존', '애플', '래핑 전략', '수익화', '디지털 식민지화'] }

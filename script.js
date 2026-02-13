@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Category Badge Style
             const categoryLabel = {
+                'iscream': '🍦 아이스크림미디어 소식',
                 'policy': '🏛️ 국가 정책',
                 'local': '🏫 지역 교육 현황',
                 'edutech': '🚀 에듀테크 기업',
@@ -77,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function openModal(item) {
         // Populate Data
         const categoryLabel = {
+            'iscream': '🍦 아이스크림미디어 소식',
             'policy': '🏛️ 국가 정책',
             'local': '🏫 지역 교육 현황',
             'edutech': '🚀 에듀테크 기업',
