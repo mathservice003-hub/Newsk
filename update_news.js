@@ -35,8 +35,8 @@ const feeds = [
     {
         category: 'local',
         label: '지역 교육 현장',
-        // Logic: (Location/Role) AND (Action/Status)
-        customQuery: '(교육청 OR "디지털 튜터" OR "AI 중점학교") (공고 OR 실태 OR 운영)'
+        // Logic: (Edu Office/Univ) AND (Specific Projects: Digital Tutor, AI School, AI Usage)
+        customQuery: '(교육청 OR "대학" OR "대학교") ("디지털 튜터" OR "AI 중점학교" OR "AI 활용" OR "SW중심대학" OR "글로컬대학") -인사 -부고 -동정'
     },
     {
         category: 'edutech',
