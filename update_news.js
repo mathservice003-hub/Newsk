@@ -15,20 +15,64 @@ function cleanText(str) {
     return decoded.trim();
 }
 
+/**
+ * [User Defined News Criteria]
+ * 1. i-Scream: PR, BETT, Exhibition
+ * 2. Policy: Ministry of Ed, NECOM, Neulbom, AI Textbook, CSAT
+ * 3. Local: Edu Offices (Digital Tutor, AI School), University AI
+ * 4. Edutech: Competitors (Visang, Dong-A, MegaStudy, etc.)
+ * 5. Global/AI: Big Tech (Google, OpenAI, MS), Robot Tax, Literacy
+ */
 const feeds = [
     {
         category: 'iscream',
         label: '아이스크림미디어 소식',
-        keywords: ['아이스크림미디어', '아이스크림에듀', 'i-Scream Media'],
+        keywords: [
+            '아이스크림미디어', '아이스크림에듀', 'i-Scream Media',
+            'BETT', '에듀테크 박람회', 'CES 교육', '학습 박람회'
+        ],
         exclusions: []
     },
     {
         category: 'policy',
-        label: '국가 정책', keywords: ['교육부', '평가원', '수능', '입법', '정신건강', '심리부검', '신학기 점검', '공교육 정책'], exclusions: ['군청', '읍 사무소', '면 사무소', '이장', '마을', '농업', '축제']
+        label: '국가 정책',
+        keywords: [
+            '교육부', '국가교육위원회', '늘봄학교', 'AI 디지털교과서',
+            '수능', '2028 대입', '교육발전특구', '공교육 경쟁력',
+            '사교육 카르텔', '교권 보호'
+        ],
+        exclusions: ['군청', '읍 사무소', '행정복지센터']
     },
-    { category: 'local', label: '지역 교육 현황', keywords: ['대학', '대학교', '대학 총장', '학사 운영', '캠퍼스', '고등교육', 'LINC', '글로컬대학'], exclusions: ['군', '참모총장', '국방부', '계엄', '내란', '의혹', '전투', '부대'] },
-    { category: 'edutech', label: '에듀테크 기업', keywords: ['아이스크림미디어', '에듀테크'], exclusions: ['구글', '애플', '아마존', '마이크로소프트', 'MS', '제미나이', 'GPT'] },
-    { category: 'trend', label: 'AI/글로벌', keywords: ['AI', '로봇', '범용인공지능', 'AGI', '할루시네이션', '환각', '인용 오류', '구글', '제미나이', '아마존', '애플', '래핑 전략', '수익화', '디지털 식민지화'] }
+    {
+        category: 'local',
+        label: '지역 교육 현장',
+        keywords: [
+            '교육청', '서울시교육청', '경기도교육청', // Local Offices
+            '디지털튜터', 'AI 중점학교', 'IB 교육', // Specific Projects
+            '대학 AI', 'SW 중심대학', '글로컬대학', '대학 혁신' // University
+        ],
+        exclusions: ['부음', '인사', '동정', '모집 공고'] // Reduce noise
+    },
+    {
+        category: 'edutech',
+        label: '에듀테크 소식',
+        keywords: [
+            '비상교육', '동아출판', '천재교육', '미래엔',
+            '메가스터디', '웅진씽크빅', '대교', '교원',
+            '에듀테크 시장', 'LMS'
+        ],
+        exclusions: []
+    },
+    {
+        category: 'trend',
+        label: 'AI/글로벌',
+        keywords: [
+            '구글 AI', 'OpenAI', '오픈AI', 'Microsoft', 'MS', 'Chatgpt',
+            '로봇세', '문해력', '디지털 리터러시', 'AI 윤리',
+            '생성형 AI', 'AGI', '소버린 AI'
+        ],
+        exclusions: []
+    }
 ];
 
 function parseRSS(xml) {
@@ -66,15 +110,14 @@ function fetchMetaDescription(targetUrl) {
                 path: parsedUrl.pathname + parsedUrl.search,
                 method: 'GET',
                 headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36' },
-                timeout: 3000 // 3s timeout
+                timeout: 3000
             };
 
             const req = https.request(options, (res) => {
                 let data = '';
-                // Only need the first part of the body for meta tags
                 res.on('data', (chunk) => {
                     data += chunk;
-                    if (data.length > 15000) { req.destroy(); } // Stop after 15KB
+                    if (data.length > 15000) { req.destroy(); }
                 });
                 res.on('end', () => resolve(extractMeta(data)));
                 res.on('error', () => resolve(null));
@@ -93,10 +136,8 @@ function extractMeta(html) {
     if (!html) return null;
     const ogDesc = /<meta\s+property=["']og:description["']\s+content=["'](.*?)["']/i.exec(html);
     if (ogDesc) return cleanText(ogDesc[1]);
-
     const metaDesc = /<meta\s+name=["']description["']\s+content=["'](.*?)["']/i.exec(html);
     if (metaDesc) return cleanText(metaDesc[1]);
-
     return null;
 }
 
@@ -127,7 +168,7 @@ function fetchFeed(feedObj) {
 }
 
 async function updateData() {
-    console.log('📰 Fetching targeted news for i-Scream Media...');
+    console.log('📰 Fetching targeted news based on New Criteria (BETT, Policy, Edu Office, Competitors)...');
 
     try {
         const allPromises = feeds.map(feed => fetchFeed(feed));
@@ -135,18 +176,14 @@ async function updateData() {
         let allArticles = results.flat();
         allArticles.sort((a, b) => b.pubDate - a.pubDate);
 
-        // Process top 20 articles to enrich with Meta Descriptions
-        // Doing this in chunks to avoid overwhelming formatting
         let idCounter = 1;
         const enrichedData = [];
 
         console.log(`🔍 Enriching ${allArticles.length} articles with meta descriptions...`);
 
-        // Serial processing for safety (or parallel with limit)
         for (const article of allArticles) {
             let content = article.rssDescription;
 
-            // If RSS description is too short, try fetching meta
             if (!content || content.length < 50) {
                 const metaDesc = await fetchMetaDescription(article.link);
                 if (metaDesc && metaDesc.length > content.length) {
@@ -154,12 +191,10 @@ async function updateData() {
                 }
             }
 
-            // Fallback (if still empty)
             if (!content || content.length < 20) {
                 content = `${article.title}... 이 기사는 아이스크림미디어 비즈니스와 관련된 주요 내용을 다루고 있습니다. 자세한 내용은 원문을 참고해 주십시오.`;
             }
 
-            // Strategic Insights
             const importanceList = [
                 "이 이슈는 아이스크림미디어의 기존 에듀테크 사업 모델에 직접적인 영향을 줄 수 있는 중요한 변화입니다. 특히 공교육 디지털 전환 정책과 맞물려 시장의 판도가 바뀔 가능성이 높으므로, 경쟁사의 대응 현황을 면밀히 모니터링하고 자사의 차별화된 기술력(AI 튜터 등)을 부각할 수 있는 방안을 모색해야 합니다.",
                 "최근 교육 현장에서의 요구 사항이 반영된 뉴스로, 향후 플랫폼 고도화 방향 설정에 있어 중요한 참고 지표가 될 것입니다. 단순한 기능 제공을 넘어 교사와 학생의 실질적인 페인 포인트(Pain Point)를 해결해 줄 수 있는 솔루션으로서의 가치를 증명해야 하는 시점입니다.",

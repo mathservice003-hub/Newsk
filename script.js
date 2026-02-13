@@ -51,8 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const categoryLabel = {
                 'iscream': '🍦 아이스크림미디어 소식',
                 'policy': '🏛️ 국가 정책',
-                'local': '🏫 지역 교육 현황',
-                'edutech': '🚀 에듀테크 기업',
+                'local': '🏫 지역 교육 현장',
+                'edutech': '🚀 에듀테크 소식',
                 'trend': '🌎 AI/글로벌'
             }[item.category];
 
@@ -80,8 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const categoryLabel = {
             'iscream': '🍦 아이스크림미디어 소식',
             'policy': '🏛️ 국가 정책',
-            'local': '🏫 지역 교육 현황',
-            'edutech': '🚀 에듀테크 기업',
+            'local': '🏫 지역 교육 현장',
+            'edutech': '🚀 에듀테크 소식',
             'trend': '🌎 AI/글로벌'
         }[item.category];
 
