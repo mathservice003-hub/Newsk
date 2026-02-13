@@ -252,7 +252,7 @@ h1 {
     gap: 0.5rem;
 }
 
-/* Modal - Fix */
+/* Modal - Completely Revamped */
 .modal {
     position: fixed;
     top: 0;
@@ -292,8 +292,7 @@ h1 {
 .modal-content {
     background: white;
     width: 100%;
-    max-width: 800px;
-    /* Wider modal */
+    max-width: 700px;
     max-height: 90vh;
     border-radius: 20px;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
@@ -333,20 +332,20 @@ h1 {
     background: #e9ecef;
 }
 
-/* Modal Header Area - Increased Sizes */
+/* Modal Header Area */
 .modal-header {
     background: linear-gradient(to right, #ffffff, #f8f9fa);
-    padding: 2.5rem 3rem 1.5rem 3rem;
+    padding: 2.5rem 2.5rem 1.5rem 2.5rem;
     border-bottom: 1px solid #eee;
 }
 
 .badge {
     display: inline-block;
-    padding: 0.5rem 1.2rem;
+    padding: 0.4rem 1rem;
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 0.85rem;
     font-weight: 700;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
     background: #eee;
 }
 
@@ -372,18 +371,16 @@ h1 {
 
 .modal-header .date {
     display: inline-block;
-    margin-left: 1rem;
+    margin-left: 0.8rem;
     color: #888;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
 }
 
 .modal-header h2 {
-    font-size: 2.2rem;
-    /* Much larger */
+    font-size: 1.75rem;
     line-height: 1.3;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
     color: #212529;
-    letter-spacing: -0.01em;
 }
 
 .origin-link {
@@ -393,7 +390,7 @@ h1 {
     color: var(--accent-primary);
     text-decoration: none;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     padding: 0.5rem 0;
 }
 
@@ -401,47 +398,44 @@ h1 {
     text-decoration: underline;
 }
 
-/* Modal Body Area - Increased Sizes */
+/* Modal Body Area */
 .modal-body {
-    padding: 2.5rem 3rem;
+    padding: 2rem 2.5rem;
 }
 
 .summary-section {
     background: #fff;
     border: 1px solid #eee;
-    padding: 2rem;
-    border-radius: 16px;
-    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
 }
 
 .summary-section h3 {
-    font-size: 1.4rem;
-    /* Larger */
+    font-size: 1.1rem;
     color: #343a40;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
     display: flex;
     align-items: center;
-    gap: 0.8rem;
-    font-weight: 700;
+    gap: 0.6rem;
 }
 
 .summary-section h3 i {
     color: var(--accent-secondary);
-    font-size: 1.6rem;
+    font-size: 1.3rem;
 }
 
 .summary-section p {
-    color: #333;
-    font-size: 1.25rem;
-    /* ~20px Body Text */
-    line-height: 1.8;
+    color: #495057;
+    font-size: 1.05rem;
+    line-height: 1.7;
     white-space: pre-line;
-    word-break: keep-all;
 }
 
-/* Insight Box */
+/* Insight Box Special Style */
 .insight-box {
     background: #F0FDF4;
+    /* Light Green/Mint tint */
     border: 1px solid #DCFCE7;
 }
 
@@ -475,13 +469,5 @@ h1 {
     .modal-header,
     .modal-body {
         padding: 1.5rem;
-    }
-
-    .modal-header h2 {
-        font-size: 1.6rem;
-    }
-
-    .summary-section p {
-        font-size: 1.1rem;
     }
 }
