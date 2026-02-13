@@ -37,10 +37,10 @@ const feeds = [
         category: 'local',
         label: '지역 교육 현황',
         keywords: [
-            '대학', '대학교', '총장', '학사 운영', '캠퍼스',
+            '대학', '대학교', '대학 총장', '학사 운영', '캠퍼스', // '총장' -> '대학 총장' to avoid military ranks
             '고등교육', 'LINC', '글로컬대학'
-        ]
-        // Exclusions not strictly needed as keywords are specific to University
+        ],
+        exclusions: ['군', '참모총장', '국방부', '계엄', '내란', '의혹', '전투', '부대'] // Explicitly exclude military/political keywords
     },
     {
         category: 'edutech',
@@ -48,7 +48,7 @@ const feeds = [
         keywords: [
             '아이스크림미디어', '에듀테크'
         ],
-        exclusions: ['구글', '애플', '아마존', '마이크로소프트', 'MS', '제미나이', 'GPT'] // Exclude Global Big Tech here
+        exclusions: ['구글', '애플', '아마존', '마이크로소프트', 'MS', '제미나이', 'GPT']
     },
     {
         category: 'trend',
@@ -97,30 +97,31 @@ function parseRSS(xml) {
     return items;
 }
 
-// Fetch Generic Function
+// Fetch Generic Function (Fixed for Encoding Issues)
 function fetchFeed(feedObj) {
     return new Promise((resolve) => {
         // Construct detailed query
-        // Group keywords with OR, wrap in parentheses
         const queryGroup = `(${feedObj.keywords.map(k => `"${k}"`).join(' OR ')})`;
 
-        // Add exclusions if any
         let exclusionStr = '';
         if (feedObj.exclusions && feedObj.exclusions.length > 0) {
             exclusionStr = ' ' + feedObj.exclusions.map(e => `-${e}`).join(' ');
         }
 
-        const fullQuery = `${queryGroup}${exclusionStr} when:1d`; // Last 24 hours
+        const fullQuery = `${queryGroup}${exclusionStr} when:1d`;
         const encodedQuery = encodeURIComponent(fullQuery);
         const url = `https://news.google.com/rss/search?q=${encodedQuery}&hl=ko&gl=KR&ceid=KR:ko`;
 
         https.get(url, (res) => {
-            let data = '';
-            res.on('data', (chunk) => { data += chunk; });
+            // Use Buffer to handle multi-byte characters correctly
+            const chunks = [];
+            res.on('data', (chunk) => { chunks.push(chunk); });
             res.on('end', () => {
                 try {
+                    const buffer = Buffer.concat(chunks);
+                    const data = buffer.toString(); // Convert buffer to string once complete
+
                     const items = parseRSS(data);
-                    // Filter: take top 9 items per category
                     const topItems = items.slice(0, 9).map(item => ({
                         ...item,
                         category: feedObj.category
@@ -147,12 +148,10 @@ async function updateData() {
         const results = await Promise.all(allPromises);
         let allArticles = results.flat();
 
-        // Sort by date (newest first)
         allArticles.sort((a, b) => b.pubDate - a.pubDate);
 
         let idCounter = 1;
         const formattedData = allArticles.map(article => {
-            // Strategic Insight Generation
             const importanceList = [
                 "아이스크림미디어의 사업 방향성과 밀접한 관련이 있는 중요 기사입니다.",
                 "현장 내 에듀테크 도입 및 활용 과정에서 참고해야 할 핵심 사례입니다.",
@@ -170,7 +169,6 @@ async function updateData() {
             let importance = importanceList[Math.floor(Math.random() * importanceList.length)];
             let insight = insightList[Math.floor(Math.random() * insightList.length)];
 
-            // Format Date to YYYY.MM.DD
             const d = new Date(article.pubDate);
             const dateStr = `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
 
@@ -187,7 +185,6 @@ async function updateData() {
             };
         });
 
-        // Write to data.js
         const fileContent = `const newsData = ${JSON.stringify(formattedData, null, 4)};`;
         fs.writeFileSync(path.join(__dirname, 'data.js'), fileContent, 'utf8');
 
