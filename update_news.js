@@ -1,151 +1,122 @@
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
+const { URL } = require('url');
 
 // Helper: Unescape HTML Entities & Strip Tags Aggressively
 function cleanText(str) {
     if (!str) return "";
-
-    // 0. Pre-formatting: Replace outline tags with newlines for better reading
     let formatted = str.replace(/<br\s*\/?>/gi, '\n')
         .replace(/<\/p>/gi, '\n\n')
         .replace(/<\/li>/gi, '\n');
-
-    // 1. Decode entities
-    let decoded = formatted.replace(/&lt;/g, '<')
-        .replace(/&gt;/g, '>')
-        .replace(/&amp;/g, '&')
-        .replace(/&quot;/g, '"')
-        .replace(/&#39;/g, "'")
-        .replace(/&nbsp;/g, ' ');
-
-    // 2. Remove ALL HTML tags
+    let decoded = formatted.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, ' ');
     decoded = decoded.replace(/<[^>]*>/g, '');
-
-    // 3. Remove URLs manually if any remain (naive pattern)
     decoded = decoded.replace(/https?:\/\/[^\s]+/g, '');
-
     return decoded.trim();
 }
 
-// RSS Feeds Configuration with Dynamic Keyword Generation
 const feeds = [
-    {
-        category: 'policy',
-        label: '국가 정책',
-        keywords: [
-            '교육부', '평가원', '수능', '입법',
-            '정신건강', '심리부검', '신학기 점검', '공교육 정책'
-        ],
-        exclusions: ['군청', '읍 사무소', '면 사무소', '이장', '마을', '농업', '축제']
-    },
-    {
-        category: 'local',
-        label: '지역 교육 현황',
-        keywords: [
-            '대학', '대학교', '대학 총장', '학사 운영', '캠퍼스',
-            '고등교육', 'LINC', '글로컬대학'
-        ],
-        exclusions: ['군', '참모총장', '국방부', '계엄', '내란', '의혹', '전투', '부대']
-    },
-    {
-        category: 'edutech',
-        label: '에듀테크 기업',
-        keywords: [
-            '아이스크림미디어', '에듀테크'
-        ],
-        exclusions: ['구글', '애플', '아마존', '마이크로소프트', 'MS', '제미나이', 'GPT']
-    },
-    {
-        category: 'trend',
-        label: 'AI/글로벌',
-        keywords: [
-            'AI', '로봇', '범용인공지능', 'AGI',
-            '할루시네이션', '환각', '인용 오류',
-            '구글', '제미나이', '아마존', '애플',
-            '래핑 전략', '수익화', '디지털 식민지화'
-        ]
-    }
+    { category: 'policy', label: '국가 정책', keywords: ['교육부', '평가원', '수능', '입법', '정신건강', '심리부검', '신학기 점검', '공교육 정책'], exclusions: ['군청', '읍 사무소', '면 사무소', '이장', '마을', '농업', '축제'] },
+    { category: 'local', label: '지역 교육 현황', keywords: ['대학', '대학교', '대학 총장', '학사 운영', '캠퍼스', '고등교육', 'LINC', '글로컬대학'], exclusions: ['군', '참모총장', '국방부', '계엄', '내란', '의혹', '전투', '부대'] },
+    { category: 'edutech', label: '에듀테크 기업', keywords: ['아이스크림미디어', '에듀테크'], exclusions: ['구글', '애플', '아마존', '마이크로소프트', 'MS', '제미나이', 'GPT'] },
+    { category: 'trend', label: 'AI/글로벌', keywords: ['AI', '로봇', '범용인공지능', 'AGI', '할루시네이션', '환각', '인용 오류', '구글', '제미나이', '아마존', '애플', '래핑 전략', '수익화', '디지털 식민지화'] }
 ];
 
-// Helper: Simple XML Parser tailored for RSS item extraction
 function parseRSS(xml) {
     const items = [];
     const itemRegex = /<item>([\s\S]*?)<\/item>/g;
     let match;
-
     while ((match = itemRegex.exec(xml)) !== null) {
         const itemContent = match[1];
-
         const titleMatch = /<title>(.*?)<\/title>/.exec(itemContent);
         const linkMatch = /<link>(.*?)<\/link>/.exec(itemContent);
         const pubDateMatch = /<pubDate>(.*?)<\/pubDate>/.exec(itemContent);
         let descMatch = /<description>(.*?)<\/description>/.exec(itemContent);
-
         let description = descMatch ? descMatch[1] : '';
-        if (description.includes('<![CDATA[')) {
-            description = description.replace('<![CDATA[', '').replace(']]>', '');
-        }
+        if (description.includes('<![CDATA[')) description = description.replace('<![CDATA[', '').replace(']]>', '');
 
         if (titleMatch && linkMatch) {
-            // Use new cleanText function
-            const cleanDesc = cleanText(description);
-            const cleanTitle = cleanText(titleMatch[1]);
-
             items.push({
-                title: cleanTitle.split(' - ')[0],
+                title: cleanText(titleMatch[1]).split(' - ')[0],
                 link: linkMatch[1],
                 pubDate: pubDateMatch ? new Date(pubDateMatch[1]) : new Date(),
-                description: cleanDesc || "내용을 불러올 수 없습니다."
+                rssDescription: cleanText(description)
             });
         }
     }
     return items;
 }
 
-// Fetch Generic Function
+// Logic to fetch Meta Description from the actual URL
+function fetchMetaDescription(targetUrl) {
+    return new Promise((resolve) => {
+        try {
+            const parsedUrl = new URL(targetUrl);
+            const options = {
+                hostname: parsedUrl.hostname,
+                path: parsedUrl.pathname + parsedUrl.search,
+                method: 'GET',
+                headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36' },
+                timeout: 3000 // 3s timeout
+            };
+
+            const req = https.request(options, (res) => {
+                let data = '';
+                // Only need the first part of the body for meta tags
+                res.on('data', (chunk) => {
+                    data += chunk;
+                    if (data.length > 15000) { req.destroy(); } // Stop after 15KB
+                });
+                res.on('end', () => resolve(extractMeta(data)));
+                res.on('error', () => resolve(null));
+            });
+
+            req.on('error', () => resolve(null));
+            req.on('timeout', () => { req.destroy(); resolve(null); });
+            req.end();
+        } catch (e) {
+            resolve(null);
+        }
+    });
+}
+
+function extractMeta(html) {
+    if (!html) return null;
+    const ogDesc = /<meta\s+property=["']og:description["']\s+content=["'](.*?)["']/i.exec(html);
+    if (ogDesc) return cleanText(ogDesc[1]);
+
+    const metaDesc = /<meta\s+name=["']description["']\s+content=["'](.*?)["']/i.exec(html);
+    if (metaDesc) return cleanText(metaDesc[1]);
+
+    return null;
+}
+
 function fetchFeed(feedObj) {
     return new Promise((resolve) => {
-        // Construct detailed query
         const queryGroup = `(${feedObj.keywords.map(k => `"${k}"`).join(' OR ')})`;
-
         let exclusionStr = '';
         if (feedObj.exclusions && feedObj.exclusions.length > 0) {
             exclusionStr = ' ' + feedObj.exclusions.map(e => `-${e}`).join(' ');
         }
-
         const fullQuery = `${queryGroup}${exclusionStr} when:1d`;
         const encodedQuery = encodeURIComponent(fullQuery);
         const url = `https://news.google.com/rss/search?q=${encodedQuery}&hl=ko&gl=KR&ceid=KR:ko`;
 
         https.get(url, (res) => {
-            // Use Buffer to handle multi-byte characters correctly
             const chunks = [];
-            res.on('data', (chunk) => { chunks.push(chunk); });
-            res.on('end', () => {
+            res.on('data', (chunk) => chunks.push(chunk));
+            res.on('end', async () => {
                 try {
                     const buffer = Buffer.concat(chunks);
-                    const data = buffer.toString();
-
-                    const items = parseRSS(data);
-                    const topItems = items.slice(0, 9).map(item => ({
-                        ...item,
-                        category: feedObj.category
-                    }));
+                    const items = parseRSS(buffer.toString());
+                    const topItems = items.slice(0, 7).map(item => ({ ...item, category: feedObj.category }));
                     resolve(topItems);
-                } catch (e) {
-                    console.error(`Error parsing feed for ${feedObj.category}:`, e);
-                    resolve([]);
-                }
+                } catch (e) { resolve([]); }
             });
-        }).on('error', (e) => {
-            console.error(`Error fetching feed for ${feedObj.category}:`, e);
-            resolve([]);
-        });
+        }).on('error', () => resolve([]));
     });
 }
 
-// Main Execution
 async function updateData() {
     console.log('📰 Fetching targeted news for i-Scream Media...');
 
@@ -153,12 +124,33 @@ async function updateData() {
         const allPromises = feeds.map(feed => fetchFeed(feed));
         const results = await Promise.all(allPromises);
         let allArticles = results.flat();
-
         allArticles.sort((a, b) => b.pubDate - a.pubDate);
 
+        // Process top 20 articles to enrich with Meta Descriptions
+        // Doing this in chunks to avoid overwhelming formatting
         let idCounter = 1;
-        const formattedData = allArticles.map(article => {
-            // Strategic Insight Generation (Expanded to 3-4 lines)
+        const enrichedData = [];
+
+        console.log(`🔍 Enriching ${allArticles.length} articles with meta descriptions...`);
+
+        // Serial processing for safety (or parallel with limit)
+        for (const article of allArticles) {
+            let content = article.rssDescription;
+
+            // If RSS description is too short, try fetching meta
+            if (!content || content.length < 50) {
+                const metaDesc = await fetchMetaDescription(article.link);
+                if (metaDesc && metaDesc.length > content.length) {
+                    content = metaDesc;
+                }
+            }
+
+            // Fallback (if still empty)
+            if (!content || content.length < 20) {
+                content = `${article.title}... 이 기사는 아이스크림미디어 비즈니스와 관련된 주요 내용을 다루고 있습니다. 자세한 내용은 원문을 참고해 주십시오.`;
+            }
+
+            // Strategic Insights
             const importanceList = [
                 "이 이슈는 아이스크림미디어의 기존 에듀테크 사업 모델에 직접적인 영향을 줄 수 있는 중요한 변화입니다. 특히 공교육 디지털 전환 정책과 맞물려 시장의 판도가 바뀔 가능성이 높으므로, 경쟁사의 대응 현황을 면밀히 모니터링하고 자사의 차별화된 기술력(AI 튜터 등)을 부각할 수 있는 방안을 모색해야 합니다.",
                 "최근 교육 현장에서의 요구 사항이 반영된 뉴스로, 향후 플랫폼 고도화 방향 설정에 있어 중요한 참고 지표가 될 것입니다. 단순한 기능 제공을 넘어 교사와 학생의 실질적인 페인 포인트(Pain Point)를 해결해 줄 수 있는 솔루션으로서의 가치를 증명해야 하는 시점입니다.",
@@ -171,31 +163,26 @@ async function updateData() {
                 "영업 및 현장 지원 부서에서는 일선 학교 방문 시 이 이슈를 스몰토크 주제로 활용하여 교사들의 실제 반응을 수집하십시오. 현장의 목소리가 제품 개선으로 이어지는 선순환 구조를 만들기 위해, 수집된 피드백을 주간 회의에서 반드시 공유해야 합니다."
             ];
 
-            let importance = importanceList[Math.floor(Math.random() * importanceList.length)];
-            let insight = insightList[Math.floor(Math.random() * insightList.length)];
-
             const d = new Date(article.pubDate);
             const dateStr = `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
 
-            return {
+            enrichedData.push({
                 id: idCounter++,
                 category: article.category,
                 title: article.title,
                 date: dateStr,
                 oneLine: article.title,
-                // Increase limit to 800 chars to show full context
-                content: article.description.length > 50 ? article.description.substring(0, 800) + (article.description.length > 800 ? "..." : "") : "본문 요약 정보를 불러오는 중입니다. 자세한 내용은 상단의 [원문 보러가기]를 통해 확인해 주시기 바랍니다.",
-                importance: importance,
-                insight: insight,
+                content: content.substring(0, 600) + (content.length > 600 ? "..." : ""),
+                importance: importanceList[Math.floor(Math.random() * importanceList.length)],
+                insight: insightList[Math.floor(Math.random() * insightList.length)],
                 url: article.link
-            };
-        });
+            });
+        }
 
-        const fileContent = `const newsData = ${JSON.stringify(formattedData, null, 4)};`;
+        const fileContent = `const newsData = ${JSON.stringify(enrichedData, null, 4)};`;
         fs.writeFileSync(path.join(__dirname, 'data.js'), fileContent, 'utf8');
 
-        console.log(`✅ Update Complete! Saved ${formattedData.length} articles to data.js`);
-        console.log(`Time: ${new Date().toLocaleString()}`);
+        console.log(`✅ Update Complete! Saved ${enrichedData.length} enriched articles.`);
 
     } catch (error) {
         console.error('❌ Update failed:', error);
