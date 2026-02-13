@@ -29,8 +29,8 @@ const feeds = [
     {
         category: 'policy',
         label: '국가 정책',
-        // Logic: (Agency) AND (Topic)
-        customQuery: '(교육부 OR 국가교육위원회) (늘봄학교 OR "디지털 교과서" OR 수능 OR "AI 교과서")'
+        // Logic: (Gov Body) AND (Core Issues: Neulbom, AI Textbook, CSAT) -Noise
+        customQuery: '(교육부 OR 국가교육위원회) ("늘봄" OR "늘봄학교" OR "AI 디지털교과서" OR "AI교과서" OR "수능") -인사 -동정 -행사 -부고'
     },
     {
         category: 'local',
