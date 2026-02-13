@@ -30,7 +30,14 @@
             <button class="nav-btn" data-category="local">🏫 지역 교육 현황</button>
             <button class="nav-btn" data-category="edutech">🚀 에듀테크 기업</button>
             <button class="nav-btn" data-category="trend">🌎 AI/글로벌</button>
-        </nav>
+            <nav class="category-nav">
+                <button class="nav-btn active" data-category="all">전체</button>
+                <button class="nav-btn" data-category="policy">🏛️ 국가 정책</button>
+                <button class="nav-btn" data-category="local">🏫 지역 교육 현황</button>
+                <button class="nav-btn" data-category="edutech">🚀 에듀테크 기업</button>
+                <button class="nav-btn" data-category="trend">🌎 AI/글로벌</button>
+                <button class="nav-btn highlight-btn" id="open-paste-modal">📋 뉴스레터 변환</button>
+            </nav>
     </header>
 
     <main class="app-container">
@@ -38,6 +45,29 @@
             <!-- News Cards will be injected here via JS -->
         </section>
     </main>
+
+    <!-- Paste Modal -->
+    <div id="paste-modal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content glass-panel" style="max-width: 600px;">
+            <div class="modal-header">
+                <h2>📧 뉴스레터 붙여넣기</h2>
+                <button class="close-btn" id="close-paste-modal"><i class="ph ph-x"></i></button>
+            </div>
+            <div class="modal-body">
+                <p style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">
+                    메일로 받은 뉴스레터 내용을 아래에 복사해서 붙여넣으세요.<br>
+                    자동으로 기사를 분석하여 카드 형태로 보여드립니다.
+                </p>
+                <textarea id="paste-area" placeholder="[예시]&#10;1. 교육부 AI 교과서 발표&#10;https://example.com&#10;핵심 요약: ..."
+                    style="width: 100%; height: 300px; padding: 1rem; border: 1px solid #ddd; border-radius: 8px; resize: vertical; font-family: inherit;"></textarea>
+                <button id="convert-btn"
+                    style="width: 100%; margin-top: 1rem; padding: 1rem; background: var(--accent-primary); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem;">
+                    ✨ 타일뷰로 변환하기
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Detail Modal -->
     <div id="detail-modal" class="modal hidden">

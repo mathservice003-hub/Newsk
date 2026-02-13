@@ -116,9 +116,97 @@ document.addEventListener('DOMContentLoaded', () => {
     modalOverlay.addEventListener('click', closeModal);
 
     // Close on Escape Key
+    // Close on Escape Key
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-            closeModal();
+        if (e.key === 'Escape') {
+            if (modal.classList.contains('active')) closeModal();
+            if (document.getElementById('paste-modal').classList.contains('active')) closePasteModal();
         }
     });
+
+    // --- Newsletter Paste Feature ---
+    const pasteModal = document.getElementById('paste-modal');
+    const openPasteBtn = document.getElementById('open-paste-modal');
+    const closePasteBtn = document.getElementById('close-paste-modal');
+    const convertBtn = document.getElementById('convert-btn');
+    const pasteArea = document.getElementById('paste-area');
+
+    function openPasteModal() {
+        pasteModal.classList.remove('hidden');
+        requestAnimationFrame(() => pasteModal.classList.add('active'));
+    }
+
+    function closePasteModal() {
+        pasteModal.classList.remove('active');
+        setTimeout(() => pasteModal.classList.add('hidden'), 300);
+    }
+
+    openPasteBtn.addEventListener('click', openPasteModal);
+    closePasteBtn.addEventListener('click', closePasteModal);
+    pasteModal.querySelector('.modal-overlay').addEventListener('click', closePasteModal);
+
+    convertBtn.addEventListener('click', () => {
+        const text = pasteArea.value;
+        if (!text.trim()) {
+            alert('내용을 입력해주세요!');
+            return;
+        }
+
+        const parsedData = parseNewsletter(text);
+        if (parsedData.length === 0) {
+            alert('기사를 찾을 수 없습니다. (URL이 포함되어 있는지 확인해주세요)');
+            return;
+        }
+
+        // Render parsed data
+        renderNews(parsedData);
+        closePasteModal();
+        alert(`${parsedData.length}개의 기사로 변환되었습니다!`);
+    });
+
+    // Simple Smart Parser
+    function parseNewsletter(text) {
+        const lines = text.split('\n').map(l => l.trim()).filter(l => l);
+        const articles = [];
+        let currentArticle = {};
+
+        // Loop through lines to find URL anchors
+        lines.forEach((line, index) => {
+            // Check if line is a URL
+            if (line.match(/https?:\/\/[^\s]+/)) {
+                // If we found a URL, the PREVIOUS line is likely the Title
+                if (index > 0) {
+                    let title = lines[index - 1];
+                    let url = line.match(/https?:\/\/[^\s]+/)[0];
+
+                    // Simple Category Detection from Title or Content
+                    let category = 'trend'; // default
+                    if (title.includes('정책') || title.includes('교육부')) category = 'policy';
+                    if (title.includes('대학') || title.includes('현장')) category = 'local';
+                    if (title.includes('아이스크림') || title.includes('에듀테크')) category = 'edutech';
+
+                    // Clean Title (remove leading numbers like "1. ", "- ")
+                    title = title.replace(/^[\d\.\-\s]+/, '');
+
+                    articles.push({
+                        id: Date.now() + index,
+                        category: category,
+                        title: title,
+                        date: new Date().toLocaleDateString(), // Today
+                        oneLine: title,
+                        content: "(뉴스레터 원문 참조)", // Placeholder
+                        importance: "뉴스레터에서 직접 변환된 기사입니다.",
+                        insight: "팀 공유 및 아카이빙 용도로 활용하세요.",
+                        url: url
+                    });
+                }
+            }
+        });
+
+        // Fallback: If no URLs found, try to parse chunks (Advanced)
+        // ... keeping it simple for now based on "URL is key" assumption
+
+        return articles;
+    }
+
 });

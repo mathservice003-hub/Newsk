@@ -146,6 +146,17 @@ h1 {
     box-shadow: 0 4px 10px rgba(255, 159, 64, 0.3);
 }
 
+.highlight-btn {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    background: rgba(91, 77, 255, 0.05);
+}
+
+.highlight-btn:hover {
+    background: var(--accent-primary);
+    color: white;
+}
+
 /* News Grid (Restored Grid Layout) */
 .app-container {
     max-width: 1200px;
