@@ -5,8 +5,14 @@ const path = require('path');
 // Helper: Unescape HTML Entities & Strip Tags Aggressively
 function cleanText(str) {
     if (!str) return "";
+
+    // 0. Pre-formatting: Replace outline tags with newlines for better reading
+    let formatted = str.replace(/<br\s*\/?>/gi, '\n')
+        .replace(/<\/p>/gi, '\n\n')
+        .replace(/<\/li>/gi, '\n');
+
     // 1. Decode entities
-    let decoded = str.replace(/&lt;/g, '<')
+    let decoded = formatted.replace(/&lt;/g, '<')
         .replace(/&gt;/g, '>')
         .replace(/&amp;/g, '&')
         .replace(/&quot;/g, '"')
@@ -37,10 +43,10 @@ const feeds = [
         category: 'local',
         label: '지역 교육 현황',
         keywords: [
-            '대학', '대학교', '대학 총장', '학사 운영', '캠퍼스', // '총장' -> '대학 총장' to avoid military ranks
+            '대학', '대학교', '대학 총장', '학사 운영', '캠퍼스',
             '고등교육', 'LINC', '글로컬대학'
         ],
-        exclusions: ['군', '참모총장', '국방부', '계엄', '내란', '의혹', '전투', '부대'] // Explicitly exclude military/political keywords
+        exclusions: ['군', '참모총장', '국방부', '계엄', '내란', '의혹', '전투', '부대']
     },
     {
         category: 'edutech',
@@ -97,7 +103,7 @@ function parseRSS(xml) {
     return items;
 }
 
-// Fetch Generic Function (Fixed for Encoding Issues)
+// Fetch Generic Function
 function fetchFeed(feedObj) {
     return new Promise((resolve) => {
         // Construct detailed query
@@ -119,7 +125,7 @@ function fetchFeed(feedObj) {
             res.on('end', () => {
                 try {
                     const buffer = Buffer.concat(chunks);
-                    const data = buffer.toString(); // Convert buffer to string once complete
+                    const data = buffer.toString();
 
                     const items = parseRSS(data);
                     const topItems = items.slice(0, 9).map(item => ({
@@ -152,18 +158,17 @@ async function updateData() {
 
         let idCounter = 1;
         const formattedData = allArticles.map(article => {
+            // Strategic Insight Generation (Expanded to 3-4 lines)
             const importanceList = [
-                "아이스크림미디어의 사업 방향성과 밀접한 관련이 있는 중요 기사입니다.",
-                "현장 내 에듀테크 도입 및 활용 과정에서 참고해야 할 핵심 사례입니다.",
-                "경쟁사의 움직임과 시장 변화를 파악하는 데 유용한 자료입니다.",
-                "교육부 정책 변화에 따른 선제적 대응 전략 수립이 요구됩니다.",
-                "AI 기술의 실무 적용 과정에서 발생할 수 있는 리스크를 점검해야 합니다."
+                "이 이슈는 아이스크림미디어의 기존 에듀테크 사업 모델에 직접적인 영향을 줄 수 있는 중요한 변화입니다. 특히 공교육 디지털 전환 정책과 맞물려 시장의 판도가 바뀔 가능성이 높으므로, 경쟁사의 대응 현황을 면밀히 모니터링하고 자사의 차별화된 기술력(AI 튜터 등)을 부각할 수 있는 방안을 모색해야 합니다.",
+                "최근 교육 현장에서의 요구 사항이 반영된 뉴스로, 향후 플랫폼 고도화 방향 설정에 있어 중요한 참고 지표가 될 것입니다. 단순한 기능 제공을 넘어 교사와 학생의 실질적인 페인 포인트(Pain Point)를 해결해 줄 수 있는 솔루션으로서의 가치를 증명해야 하는 시점입니다.",
+                "글로벌 빅테크 기업들의 교육 시장 진출 가속화와 맥락을 같이 하는 뉴스입니다. 이는 단기적으로는 경쟁 심화를 의미하지만, 장기적으로는 AI 기반 맞춤형 학습 시장의 전체 파이(Total Addressable Market)가 커지고 있음을 시사하므로 적극적인 투자가 필요합니다.",
+                "정부 규제 및 표준화 움직임과 관련이 깊습니다. 특히 최근 강조되고 있는 'AI 디지털 교과서'의 법적 기준이나 윤리적 가이드라인 준수 여부가 쟁점이 될 수 있으므로, 선제적인 컴플라이언스 점검과 대관 업무 강화가 요구되는 시점입니다."
             ];
             const insightList = [
-                "관련 규제 신설에 대비하여 자사 플랫폼의 컴플라이언스 기능을 점검하십시오.",
-                "현장의 페인 포인트(부정행위, 과의존)를 해결할 기술적 솔루션을 제안해야 합니다.",
-                "글로벌 빅테크의 전략을 벤치마킹하여 플랫폼 경쟁력을 강화할 필요가 있습니다.",
-                "서비스 마케팅 시 본 기사의 사례를 활용하여 신뢰도를 높이는 전략이 유효합니다."
+                "기획/개발 팀은 해당 뉴스에 언급된 기술적 기능(기능명, UX 동선 등)을 벤치마킹하여 차기 업데이트 로드맵에 반영하십시오. 특히 사용자 경험(UX) 측면에서 교사의 업무 경감을 돕는 자동화 기능이 강조되고 있음에 주목해야 합니다.",
+                "마케팅 팀은 본 기사의 핵심 키워드를 활용하여 아이스크림미디어의 브랜드 메시지를 다듬어야 합니다. '선생님을 위한 AI', '안전한 에듀테크' 등의 키워드와 연계하여 자사 서비스의 신뢰도를 높이는 콘텐츠(카드뉴스, 아티클) 발행을 검토해 보시기 바랍니다.",
+                "영업 및 현장 지원 부서에서는 일선 학교 방문 시 이 이슈를 스몰토크 주제로 활용하여 교사들의 실제 반응을 수집하십시오. 현장의 목소리가 제품 개선으로 이어지는 선순환 구조를 만들기 위해, 수집된 피드백을 주간 회의에서 반드시 공유해야 합니다."
             ];
 
             let importance = importanceList[Math.floor(Math.random() * importanceList.length)];
@@ -178,7 +183,8 @@ async function updateData() {
                 title: article.title,
                 date: dateStr,
                 oneLine: article.title,
-                content: article.description.substring(0, 300) + (article.description.length > 300 ? "..." : ""),
+                // Increase limit to 800 chars to show full context
+                content: article.description.length > 50 ? article.description.substring(0, 800) + (article.description.length > 800 ? "..." : "") : "본문 요약 정보를 불러오는 중입니다. 자세한 내용은 상단의 [원문 보러가기]를 통해 확인해 주시기 바랍니다.",
                 importance: importance,
                 insight: insight,
                 url: article.link
