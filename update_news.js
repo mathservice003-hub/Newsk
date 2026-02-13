@@ -2,12 +2,41 @@ const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
-// RSS Feeds Configuration
+// RSS Feeds Configuration with Dynamic Keyword Generation
 const feeds = [
-    { category: 'edutech', label: '아이스크림미디어 & 경쟁사', url: 'https://news.google.com/rss/search?q=%EC%95%84%EC%9D%B4%EC%8A%A4%ED%81%AC%EB%A6%BC%EB%AF%B8%EB%94%94%EC%96%B4+%7C+%EC%95%84%EC%9D%B4%EC%8A%A4%ED%81%AC%EB%A6%BC%EC%97%90%EB%93%80+%7C+%EB%B9%84%EC%83%81%EA%B5%90%EC%9C%A1+%7C+%EC%B2%9C%EC%9E%AC%EA%B5%90%EC%9C%A1+when:1d&hl=ko&gl=KR&ceid=KR:ko' },
-    { category: 'policy', label: 'AI 디지털 교과서 정책', url: 'https://news.google.com/rss/search?q=%22AI+%EB%94%94%EC%A7%80%ED%84%B8+%EA%B5%90%EA%B3%BC%EC%84%9C%22+%7C+%22%EA%B5%90%EC%9C%A1%EB%B6%80%22+when:1d&hl=ko&gl=KR&ceid=KR:ko' },
-    { category: 'local', label: '지역 현장', url: 'https://news.google.com/rss/search?q=%EA%B5%90%EC%9C%A1%EC%B2%AD+%ED%98%84%EC%9E%A5+when:1d&hl=ko&gl=KR&ceid=KR:ko' },
-    { category: 'trend', label: '생성형 AI 교육 트렌드', url: 'https://news.google.com/rss/search?q=%22%EC%83%9D%EC%84%B1%ED%98%95+AI%22+%EA%B5%90%EC%9C%A1+%ED%99%9C%EC%9A%A9+when:1d&hl=ko&gl=KR&ceid=KR:ko' }
+    {
+        category: 'policy',
+        label: '국가 정책',
+        keywords: [
+            '교육부', '평가원', '수능', '입법',
+            '정신건강', '심리부검', '신학기 점검', '공교육 정책'
+        ]
+    },
+    {
+        category: 'local',
+        label: '지역 현장',
+        keywords: [
+            '대학', '부정행위', '과제', '교수',
+            '에듀테크', '소프트웨어', 'SW', '행정 지원'
+        ]
+    },
+    {
+        category: 'edutech',
+        label: '에듀테크 기업',
+        keywords: [
+            '아이스크림미디어', '에듀테크'
+        ]
+    },
+    {
+        category: 'trend',
+        label: 'AI/글로벌',
+        keywords: [
+            'AI', '로봇', '범용인공지능', 'AGI',
+            '할루시네이션', '환각', '인용 오류',
+            '구글', '제미나이', '아마존', '애플',
+            '래핑 전략', '수익화', '디지털 식민지화'
+        ]
+    }
 ];
 
 // Helper: Unescape HTML Entities
@@ -57,13 +86,20 @@ function parseRSS(xml) {
 // Fetch Generic Function
 function fetchFeed(feedObj) {
     return new Promise((resolve) => {
-        https.get(feedObj.url, (res) => {
+        // Construct detailed query
+        // Group keywords with OR, wrap in parentheses
+        const queryGroup = `(${feedObj.keywords.map(k => `"${k}"`).join(' OR ')})`;
+        const fullQuery = `${queryGroup} when:1d`; // Last 24 hours
+        const encodedQuery = encodeURIComponent(fullQuery);
+        const url = `https://news.google.com/rss/search?q=${encodedQuery}&hl=ko&gl=KR&ceid=KR:ko`;
+
+        https.get(url, (res) => {
             let data = '';
             res.on('data', (chunk) => { data += chunk; });
             res.on('end', () => {
                 try {
                     const items = parseRSS(data);
-                    // Filter: take top 9 items per category (User Request)
+                    // Filter: take top 9 items per category as requested
                     const topItems = items.slice(0, 9).map(item => ({
                         ...item,
                         category: feedObj.category
@@ -83,7 +119,7 @@ function fetchFeed(feedObj) {
 
 // Main Execution
 async function updateData() {
-    console.log('📰 Fetching strategic news for i-Scream Media...');
+    console.log('📰 Fetching targeted news for i-Scream Media...');
 
     try {
         const allPromises = feeds.map(feed => fetchFeed(feed));
@@ -93,23 +129,21 @@ async function updateData() {
         // Sort by date (newest first)
         allArticles.sort((a, b) => b.pubDate - a.pubDate);
 
-        // No total limit. Show full grid.
-
         let idCounter = 1;
         const formattedData = allArticles.map(article => {
-            // Strategic Insight Generation (Business Focused)
+            // Strategic Insight Generation
             const importanceList = [
-                "정부의 규제 방향성과 직결되는 사안으로, 서비스 컴플라이언스(Compliance) 점검이 필요합니다.",
-                "현장 교사들의 니즈(Needs)와 페인 포인트(Pain Point)를 정확히 파악할 수 있는 사례입니다.",
-                "경쟁사의 BM 확장 전략을 보여주는 단서로, 대응 전략 마련이 시급합니다.",
-                "기술적 한계(비용, 정확도)를 극복하기 위한 시장의 새로운 움직임입니다.",
-                "B2G 수주 경쟁에서 우위를 점하기 위한 필수 레퍼런스가 될 수 있습니다."
+                "아이스크림미디어의 사업 방향성과 밀접한 관련이 있는 중요 기사입니다.",
+                "현장 내 에듀테크 도입 및 활용 과정에서 참고해야 할 핵심 사례입니다.",
+                "경쟁사의 움직임과 시장 변화를 파악하는 데 유용한 자료입니다.",
+                "교육부 정책 변화에 따른 선제적 대응 전략 수립이 요구됩니다.",
+                "AI 기술의 실무 적용 과정에서 발생할 수 있는 리스크를 점검해야 합니다."
             ];
             const insightList = [
-                "자사 서비스 내 '안전 장치' 및 '윤리 가이드' 기능을 마케팅 포인트로 활용해야 합니다.",
-                "현장 도입 시 발생할 수 있는 부작용을 미리 시뮬레이션하고, 해결책(Solution)을 제안서에 담아야 합니다.",
-                "단순 기술 도입을 넘어, '교사의 업무 시간 단축'이라는 효용 가치를 정량적으로 제시해야 합니다.",
-                "무거운 범용 모델보다, 교육 특화 경량 모델(sLLM) 도입을 통해 비용 효율성을 높이는 전략이 유효합니다."
+                "관련 규제 신설에 대비하여 자사 플랫폼의 컴플라이언스 기능을 점검하십시오.",
+                "현장의 페인 포인트(부정행위, 과의존)를 해결할 기술적 솔루션을 제안해야 합니다.",
+                "글로벌 빅테크의 전략을 벤치마킹하여 플랫폼 경쟁력을 강화할 필요가 있습니다.",
+                "서비스 마케팅 시 본 기사의 사례를 활용하여 신뢰도를 높이는 전략이 유효합니다."
             ];
 
             let importance = importanceList[Math.floor(Math.random() * importanceList.length)];
