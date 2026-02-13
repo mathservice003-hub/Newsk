@@ -2,6 +2,26 @@ const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
+// Helper: Unescape HTML Entities & Strip Tags Aggressively
+function cleanText(str) {
+    if (!str) return "";
+    // 1. Decode entities
+    let decoded = str.replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&amp;/g, '&')
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/&nbsp;/g, ' ');
+
+    // 2. Remove ALL HTML tags
+    decoded = decoded.replace(/<[^>]*>/g, '');
+
+    // 3. Remove URLs manually if any remain (naive pattern)
+    decoded = decoded.replace(/https?:\/\/[^\s]+/g, '');
+
+    return decoded.trim();
+}
+
 // RSS Feeds Configuration with Dynamic Keyword Generation
 const feeds = [
     {
@@ -15,12 +35,12 @@ const feeds = [
     },
     {
         category: 'local',
-        label: '지역 현장',
+        label: '지역 교육 현황',
         keywords: [
-            '대학', '부정행위', '과제', '교수',
-            '에듀테크', '소프트웨어', 'SW', '행정 지원'
-        ],
-        exclusions: ['군청', '읍 사무소', '면 사무소', '이장', '마을', '농업', '축제']
+            '대학', '대학교', '총장', '학사 운영', '캠퍼스',
+            '고등교육', 'LINC', '글로컬대학'
+        ]
+        // Exclusions not strictly needed as keywords are specific to University
     },
     {
         category: 'edutech',
@@ -42,16 +62,6 @@ const feeds = [
     }
 ];
 
-// Helper: Unescape HTML Entities
-function unescapeHTML(str) {
-    if (!str) return "";
-    return str.replace(/&lt;/g, '<')
-        .replace(/&gt;/g, '>')
-        .replace(/&amp;/g, '&')
-        .replace(/&quot;/g, '"')
-        .replace(/&#39;/g, "'");
-}
-
 // Helper: Simple XML Parser tailored for RSS item extraction
 function parseRSS(xml) {
     const items = [];
@@ -72,14 +82,15 @@ function parseRSS(xml) {
         }
 
         if (titleMatch && linkMatch) {
-            const cleanDesc = unescapeHTML(description.replace(/<[^>]*>?/gm, ''));
-            const cleanTitle = unescapeHTML(titleMatch[1]);
+            // Use new cleanText function
+            const cleanDesc = cleanText(description);
+            const cleanTitle = cleanText(titleMatch[1]);
 
             items.push({
-                title: cleanTitle.split(' - ')[0], // Google News format: Title - Source
+                title: cleanTitle.split(' - ')[0],
                 link: linkMatch[1],
                 pubDate: pubDateMatch ? new Date(pubDateMatch[1]) : new Date(),
-                description: cleanDesc.trim() || "내용을 불러올 수 없습니다."
+                description: cleanDesc || "내용을 불러올 수 없습니다."
             });
         }
     }
@@ -169,7 +180,7 @@ async function updateData() {
                 title: article.title,
                 date: dateStr,
                 oneLine: article.title,
-                content: article.description.substring(0, 150) + "...",
+                content: article.description.substring(0, 300) + (article.description.length > 300 ? "..." : ""),
                 importance: importance,
                 insight: insight,
                 url: article.link
